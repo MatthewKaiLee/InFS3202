@@ -81,29 +81,29 @@ body a:hover{
 .logo-right ul li a:hover{
 	color:#66D5DE;
 }
-.header-nav {
+.header-navigation {
     background-color: #F8F8F8;
 }
-.navbar-default {
+.navigationbar-default {
     background: none;
     border: none;
 }
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+.navigationbar-default .navigationbar-nav > .active > a, .navigationbar-default .navigationbar-nav > .active > a:hover, .navigationbar-default .navigationbar-nav > .active > a:focus {
     color: #555;
     background: none;
 }
-.navbar-default .navbar-nav > li > a {
+.navigationbar-default .navigationbar-nav > div > a {
     color: #B7B6B6;
 }
-.navbar-nav {
+.navigationbar-nav {
     float: none;
 	margin-left: 5em;
 }
-.navbar {
+.navigationbar {
     margin-bottom: 0;
 }
-.nav > li > a {
-    padding: 20px 40px;
+.navigation > div > a {
+    padding: 20px 40px 20px 40px;
 }
 /*-- effect for nav --*/
 .cl-effect-1 a::before,
@@ -739,7 +739,7 @@ h2.typoh2{
 	.well {
 		padding: 10px;
 	}
-	.nav > li > a {
+	.navigation > div > a {
 		font-size: 14px;
 	}
 	table.table.table-striped,.table-bordered,.bs-docs-example {
@@ -1185,7 +1185,7 @@ p.aut,.history-right p{
 .artical-links ul li span {
     left: -7px;
 }
-.navbar-collapse {
+.navigationbar-collapse {
   padding-right: 0;
   padding-left: 0;
 }
@@ -1258,7 +1258,7 @@ p.aut,.history-right p{
 	.logo {
 		/*margin-left: 4.5em;*/
 	}
-	.nav > li > a {
+	.navigation > div > a {
 		padding: 20px 20px;
 	}
 	.footer {
@@ -1311,10 +1311,10 @@ p.aut,.history-right p{
 	.search {
 		width: 27%;
 	}
-	.navbar-nav {
+	.navigationbar-nav {
 		margin-left: 1em;
 	}
-	.nav > li > a {
+	.navigation > div > a {
 		padding: 20px 11px;
 	}
 	.map iframe {
@@ -1418,31 +1418,31 @@ p.aut,.history-right p{
 	}
 }
 @media (max-width: 767px){
-	.navbar-default .navbar-toggle .icon-bar {
+	.navigationbar-default .navigationbar-toggle .icon-bar {
 		background-color: #fff;
 	}
-	.navbar-default .navbar-toggle {
+	.navigationbar-default .navigationbar-toggle {
 		border: none;
 		background-color: #66D5DE;
 	}
-	.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+	.navigationbar-default .navigationbar-toggle:hover, .navigationbar-default .navigationbar-toggle:focus {
 		background-color: #66D5DE;
 	}
-	.navbar-toggle {
+	.navigationbar-toggle {
 		float: none;
 		padding: 9px 10px;
 		margin:.6em 0 0 21.5em;
 	}
-	.navbar-nav {
+	.navigationbar-nav {
 		margin: 7.5px 0px;
 		background-color: #F9D780;
 		text-align: center;
 	}
-	.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+	.navigationbar-default .navigationbar-collapse, .navigationbar-default .navigationbar-form {
 		border: none;
 		box-shadow: none;
 	}
-	.navbar-default .navbar-nav > li > a {
+	.navigationbar-default .navigationbar-nav > div > a {
 		color: #fff;
 	}
 }
@@ -1450,7 +1450,7 @@ p.aut,.history-right p{
 	.search {
 		width: 31%;
 	}
-	.navbar-toggle {
+	.navigationbar-toggle {
 		margin: .6em 0 0 18em;
 	}
 }
@@ -1469,10 +1469,10 @@ p.aut,.history-right p{
 	.logo {
 		/*margin: 0 1em 0 0em;*/
 	}
-	.navbar-toggle {
+	.navigationbar-toggle {
 		margin: .6em 0 0 17.4em;
 	}
-	.nav > li > a {
+	.navigation > div > a {
 		padding: 10px 0px;
 	}
 	.banner-info h1 {
@@ -1554,7 +1554,7 @@ p.aut,.history-right p{
 	.search input[type="text"] {
 		padding: 10px 45px 10px 10px;
 	}
-	.navbar-toggle {
+	.navigationbar-toggle {
 		margin: .6em 0 0 12.4em;
 	}
 	.banner-info {
@@ -1698,7 +1698,7 @@ p.aut,.history-right p{
 	.logo a span {
 		font-size: 7px;
 	}
-	.navbar-toggle {
+	.navigationbar-toggle {
 		margin: .6em 0 0 10.4em;
 	}
 	.banner-bottom-grid-left h4 {
@@ -1899,10 +1899,10 @@ p.aut,.history-right p{
 	.logo {
 		/*margin: 0.2em 0.2em 0 0em;*/
 	}
-	.navbar-toggle {
+	.navigationbar-toggle {
 		margin: .6em 0 0 7.4em;
 	}
-	.nav > li > a {
+	.navigation > div > a {
 		padding: 6px 0px;
 	}
 	.banner-info h1 {
