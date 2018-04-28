@@ -225,7 +225,7 @@ body a:hover{
 }
 .banner-bottom h3,.features-grid-left h3,.features-grid-right h3,h3.title,.gallery h3,.history h3,.single h3,.events h3,.services h3,.about-grid h3{
 	font-size:2em;
-	color:#f9d780;
+	color:#0F52BA;
 	margin:0;
 	text-align:center;
 	font-weight:600;
@@ -1444,14 +1444,14 @@ p.aut,.history-right p{
 }
 @media (max-width: 767px){
 	.navigationbar-default .navigationbar-toggle .icon-bar {
-		background-color: #fff;
+		background-color: #ffffff;
 	}
 	.navigationbar-default .navigationbar-toggle {
 		border: none;
-		background-color: #66D5DE;
+		background-color: #73C2FB;
 	}
 	.navigationbar-default .navigationbar-toggle:hover, .navigationbar-default .navigationbar-toggle:focus {
-		background-color: #66D5DE;
+		background-color: #73C2FB;
 	}
 	.navigationbar-toggle {
 		float: none;
@@ -1460,7 +1460,7 @@ p.aut,.history-right p{
 	}
 	.navigationbar-nav {
 		margin: 7.5px 0px;
-		background-color: #F9D780;
+		background-color: #57A0D3;
 		text-align: center;
 	}
 	.navigationbar-default .navigationbar-collapse, .navigationbar-default .navigationbar-form {
