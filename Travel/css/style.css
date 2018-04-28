@@ -55,8 +55,8 @@ body a:hover{
 }
 .logo a span{
 	display: block;
-    font-size: 14px;
-    letter-spacing: 7px;
+    font-size: 20px;
+    /*letter-spacing: 7px;*/
     line-height: 0;
     text-align: center;
     color: #999;
@@ -103,7 +103,7 @@ body a:hover{
     margin-bottom: 0;
 }
 .navigation > div > a {
-    padding: 20px 40px 20px 40px;
+    padding: 20px 40px;
 }
 /*-- effect for nav --*/
 .cl-effect-1 a::before,
