@@ -42,9 +42,8 @@ body a:hover{
 	padding:12px 45px 12px 10px;
 	background:none;
 }
-.logo{
+.logo {
 	float:left;
-	margin-left:20em;
 }
 .logo a{
 	font-size:2em;
@@ -1206,7 +1205,7 @@ p.aut,.history-right p{
 		left: 15.8em;
 	}
 	.logo {
-		margin-left: 14em;
+		/*margin-left: 14em;*/
 	}
 	.banner {
 		min-height: 690px;
@@ -1220,7 +1219,7 @@ p.aut,.history-right p{
 		left: 14.8em;
 	}
 	.logo {
-		margin-left: 11em;
+		/*margin-left: 11em;*/
 	}
 	.map iframe {
 		min-height: 350px;
@@ -1237,7 +1236,7 @@ p.aut,.history-right p{
 		left: 13.8em;
 	}
 	.logo {
-		margin-left: 9em;
+		/*margin-left: 9em;*/
 	}
 	.banner-info {
 		margin: 13em 0 1em 0em;
@@ -1257,7 +1256,7 @@ p.aut,.history-right p{
 		margin-right: 1em;
 	}
 	.logo {
-		margin-left: 4.5em;
+		/*margin-left: 4.5em;*/
 	}
 	.nav > li > a {
 		padding: 20px 20px;
@@ -1306,8 +1305,8 @@ p.aut,.history-right p{
 		display: none;
 	}
 	.logo {
-		margin: 0 2em 0 0em;
-		float: right;
+		/*margin: 0 2em 0 0em;
+		float: right;*/
 	}
 	.search {
 		width: 27%;
@@ -1468,7 +1467,7 @@ p.aut,.history-right p{
 		letter-spacing: 5px;
 	}
 	.logo {
-		margin: 0 1em 0 0em;
+		/*margin: 0 1em 0 0em;*/
 	}
 	.navbar-toggle {
 		margin: .6em 0 0 17.4em;
@@ -1898,7 +1897,7 @@ p.aut,.history-right p{
 		margin: 1em 0 2em;
 	}
 	.logo {
-		margin: 0.2em 0.2em 0 0em;
+		/*margin: 0.2em 0.2em 0 0em;*/
 	}
 	.navbar-toggle {
 		margin: .6em 0 0 7.4em;
