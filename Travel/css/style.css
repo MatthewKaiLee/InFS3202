@@ -17,6 +17,31 @@ ul,label{
 body a:hover{
 	text-decoration:none;
 }
+
+#navbar {
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display:block;
+  transition: top 0.3s;
+}
+
+
+.parallax {
+    /* The image used */
+    background-image: url("../images/queensland.jpg");
+
+    /* Set a specific height */
+    min-height: 1000px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 /*-- header --*/
 .header {
     padding: 1em 0;
