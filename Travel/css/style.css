@@ -17,6 +17,23 @@ ul,label{
 body a:hover{
 	text-decoration:none;
 }
+
+
+
+.parallax {
+    /* The image used */
+    background-image: url("../images/queensland.jpg");
+
+    /* Set a specific height */
+    min-height: 1000px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 /*-- header --*/
 .header {
     padding: 1em 0;
