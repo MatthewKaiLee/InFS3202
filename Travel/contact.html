@@ -21,53 +21,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 <body>
 <!-- header -->
-	<div class="header">
-		<div class="search">
-			<form>
-				<i class="glyphicon glyphicon-search" aria-hidden="true"></i><input type="text" value="Search Here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search Here';}" required="">
-			</form>
-		</div>
-		<div class="logo">
-			<a href="index.html">Seafaring <span>A Travel Agency</span></a>
-		</div>
-		<div class="logo-right">
-			<ul>
-				<li><a href="mailto:info@example.com">mail@example.com</a></li>|
-				<li>Contact Us</li>|
-				<li>+0297 889 908</li>
-			</ul>
-		</div>
-		<div class="clearfix"> </div>
-	</div>
-	<div class="header-nav">
-		<div class="container">
-			<nav class="navbar navbar-default">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				  </button>
-				</div>
+	<div id="navbar">
+	<div class="container">
+		<!-- header -->
+		<div class="row">
+			<div class="header">
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xs-offset-4 col-md-offset-4 col-lg-offset-4 col-sm-offset-4">
+					<div class="logo">
+						<a href="index.html"><img src="images/logo.jpg" alt="logo"></a>
+					</div>
 
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
-					<nav class="cl-effect-1">
-						<ul class="nav navbar-nav">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="about.html">About</a></li>
-							<li><a href="codes.html">Short Codes</a></li>
-							<li><a href="services.html">Services</a></li>
-							<li><a href="gallery.html">Photo Gallery</a></li>
-							<li class="active"><a href="contact.html">Contact Us</a></li>
-						</ul>
-					</nav>
-				</div><!-- /.navbar-collapse -->	
-			</nav>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
 		</div>
 	</div>
+
+	<div class="container-fluid header-navigation" style="margin-bottom: 10px;">
+		<div class="navigationbar navigationbar-default">
+			<div class="row navigation navigationbar-nav">
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="index.html">Home</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="index.html#destination">Destination</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="services.html">Services</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="gallery.html">Gallery</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="about.html">About</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="contact.html">Contact</a></div>
+			</div>
+		</div>
+	</div>
+</div>
 <!-- //header -->
 <!-- banner -->
 	<div class="banner1">
@@ -79,21 +61,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3144.899142009709!2d23.72354!3d37.979482999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1bd238977fb45%3A0xbdf5a6106a003293!2sFashion+Workshop+by+Vicky+Kaya!5e0!3m2!1sen!2sin!4v1440569426817" frameborder="0" style="border:0" allowfullscreen></iframe>
 		</div>
 		<div class="contact-grids">
-			<div class="container">
-			<ol class="breadcrumb breadco">
-				<li><a href="#">Home</a></li>
-				<li class="active">Contact Us</li>
-			</ol>
+	        <h3> Our information</h3>
 			<div class="col-md-3 contact-grid">
 				<div class="call">
 					<div class="col-xs-3 contact-grdl">
 						<span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
 					</div>
 					<div class="col-xs-9 contact-grdr">
-						<ul>
-							<li>+3402 890 679</li>
-							<li>+5356 890 679</li>
-						</ul>
+					<h4>(07) 3456 7890</h4>
 					</div>
 					<div class="clearfix"> </div>
 				</div>
@@ -103,9 +78,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="col-xs-9 contact-grdr">
 						<ul>
-							<li>345 Diamond Street,</li>
-							<li>Greece.</li>
-						</ul>
+							<h4>123 Fake Street, Brisbane City.</h4>	
 					</div>
 					<div class="clearfix"> </div>
 				</div>
@@ -114,9 +87,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
 					</div>
 					<div class="col-xs-9 contact-grdr">
-						<ul>
-							<li><a href="mailto:info@example.com">info@example.com</a></li>
-						</ul>
+							<h4>mail@qta.com.au</h4>
 					</div>
 					<div class="clearfix"> </div>
 				</div>
@@ -147,42 +118,36 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="footer">
 		<div class="container">
 			<div class="footer-row">
-				<div class="col-md-3 footer-grids">
-					<h4><a href="index.html">Seafaring</a></h4>
-					<p><a href="mailto:info@example.com">mail@example.com</a></p>
-					<p>+2 000 222 1111</p>
-					<ul class="social-icons">
+				<div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
+					<h3>Queensland Travel Agency</h3>
+					<h4>mail@qta.com.au</h4>>
+					<h4>(07) 3456 7890</h4>
+					<!--<ul class="social-icons">
 						<li><a href="#" class="p"></a></li>
 						<li><a href="#" class="in"></a></li>
 						<li><a href="#" class="v"></a></li>
 						<li><a href="#" class="facebook"></a></li>
-					</ul>
+					</ul>-->
 				</div>
-				<div class="col-md-3 footer-grids">
+				<div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
 					<h3>Navigation</h3>					
 					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li><a href="about.html">About us</a></li>
-						<li><a href="services.html">Services</a></li>
-						<li><a href="codes.html">Short Codes</a></li>
-						<li><a href="contact.html">Contact</a></li>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="#destination">Destination</a></li>
+							<li><a href="services.html">Services</a></li>
+							<li><a href="gallery.html">Gallery</a></li>
+							<li><a href="about.html">About</a></li>
+							<li><a href="contact.html">Contact</a></li>
 					</ul>
 				</div>
-				<div class="col-md-2 footer-grids">
-					<h3>Support</h3>
+				<div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
+					<h3>Destination</h3>
 					<ul>
-						<li><a href="gallery.html">Photo Gallery</a></li>
-						<li><a href="#">Help Center</a></li>
-						<li><a href="#">Lemollisollis</a></li>
+						<li><a href="brisbane.html">Brisbane</a></li>
+						<li><a href="goldcoast.html">Gold Coast</a></li>
+						<li><a href="sunshinecoast.html">Sunshine Coast</a></li>
+						<li><a href="cairns.html">Cairns<a/></li>
 					</ul>
-				</div>
-				<div class="col-md-4 footer-grids">	
-					<h3>Newsletter</h3>
-					<p>It was popularised in the 1960s with the release Ipsum. <p>
-					<form>					 
-					    <input type="text" class="text" value="Enter Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Email';}">
-						<input type="submit" value="Go">					 
-				 </form>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
@@ -190,7 +155,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 	<div class="footer-bottom">
 		<div class="container">		
-			<p>Copyright &copy; 2016.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>					
+			<p>Copyright &copy; 2017.UQ</p>					
 		</div>
 	</div>
 <!--//footer-->	
