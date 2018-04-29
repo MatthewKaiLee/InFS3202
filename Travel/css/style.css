@@ -34,7 +34,9 @@ body a:hover{
     background-size: cover;
 }
 
-
+.logo-image {
+	display: block;
+}
 
 /*-- header --*/
 .header {
@@ -1256,9 +1258,16 @@ p.aut,.history-right p{
 	.search i {
 		left: 13.8em;
 	}
-	.logo {
+	.logo-image-size {
+		/*min-height: 60%;
+		min-width: 60%;
 		/*margin-left: 9em;*/
 	}
+
+	.parallax {
+    	min-height: 600px; 
+	}
+
 	.banner-info {
 		margin: 13em 0 1em 0em;
 	}
@@ -1293,6 +1302,14 @@ p.aut,.history-right p{
 	}
 	.banner-info {
 		width: 60%;
+	}
+
+	.logo-image-size {
+
+	}
+
+	.parallax {
+    	min-height: 500px; 
 	}
 	.banner {
 		min-height: 500px;
@@ -1403,6 +1420,16 @@ p.aut,.history-right p{
 	.banner-info h1 {
 		font-size: 1.5em;
 	}
+
+	.logo-image {
+		/*min-width: 34.5%;
+		min-height: 34.5%;*/
+	}
+
+	.parallax {
+    	min-height: 345px; 
+	}
+
 	.banner {
 		min-height: 345px;
 	}
@@ -1582,6 +1609,16 @@ p.aut,.history-right p{
 		width: 81%;
 		margin: 4em 0 1em 0em;
 	}
+
+	.logo-image {
+		/*min-width: 28%;
+		min-height: 28%;*/
+	}
+
+	.parallax {
+    	min-height: 280px; 
+	}
+
 	.banner {
 		min-height: 280px;
 	}
@@ -1933,6 +1970,16 @@ p.aut,.history-right p{
 		width: 100%;
 		margin: 2em 0 1em 0em;
 	}
+
+	.logo-image-size {
+		/*width: 22%;
+		height: 22%;*/
+	}
+
+	.parallax {
+   	 	min-height: 220px; 
+	}
+
 	.banner {
 		background: url(../images/queensland.jpg) no-repeat -130px 0px;
 		background-size: cover;
