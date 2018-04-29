@@ -988,7 +988,7 @@ h2.typoh2{
 	margin:3em 0 0;
 }
 .mnth-date-left h4{
-	border-right:1px solid #DEDEDE;
+	/*border-right:1px solid #DEDEDE;*/
 	font-size:2em;
 	color:#f9d780;
 	margin:0;
