@@ -217,7 +217,7 @@ body a:hover{
 }
 /*-- //banner --*/
 /*-- banner-bottom --*/
-.banner-bottom,.features,.typo,.contact-grids,.gallery,.services,.about,.events,.history,.single{
+.banner-bottom,.features,.typo,.contact-grids,.gallery,.services,.about,.events,.history,.single, .register-form, .login-form, .destination, .package, .cart{
 	padding:5em 0;
 }
 .banner-bottom h3,.features-grid-left h3,.features-grid-right h3,h3.title,.gallery h3,.history h3,.single h3,.events h3,.services h3,.about-grid h3{
