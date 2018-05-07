@@ -1,7 +1,41 @@
+<?php
+	/*function checkValue($value, $type) {
+		if($type == "string") {
+			if ($value != "") {
+				$value = filter_var($value, FILTER_SANITIZE_MAGIC_QUOTES);
+			} else {
+				$value = "";
+			}
+		} else if($type == "int") {
+
+		}
+	}*/
+	session_start();
+	if(isset($_POST["action"]) && $_POST["action"] == "register") {
+		require("connectDatabaseObject.php");
+		$username = $_POST["username"];
+		$query_ExistUser = "SELECT Username FROM customer WHERE Username = '".$username."'";
+		$result_ExistUser = $db_link -> query($query_ExistUser);
+		if ($result_ExistUser -> num_rows <= 0) {
+			$insert_query = "INSERT INTO customer (FirstName, LastName, Email, Username, Password) VALUES (?,?,?,?,?)";
+			$stmt_Object = $db_link -> prepare($insert_query);
+			$stmt_Object -> bind_param("sssss", $_POST["fname"], $_POST["lname"], $_POST["email"], $_POST["username"], password_hash($_POST["password"], PASSWORD_DEFAULT));
+			$stmt_Object -> execute();
+			$stmt_Object -> close();
+			$db_link -> close();
+			$_SESSION["username"] = $_POST["username"];
+			header("Location: index.php");
+		} else {
+			header("Location: register.php?error=true&username='".$username."'");
+		}
+	}
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
-<title>Login</title>
+<title>register</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -34,29 +68,27 @@
 <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,100,100italic,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 
-
+<script src="js/register.js" type="text/javascript"></script>
 
 
 </head>
 	
 <body>
 	<!-- header -->
-	<div class="row logo-image">
-		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-md-offset-4 col-lg-offset-4 col-sm-offset-4 col-xs-offset-4">
-			<a href="index.html" class="logo-image"><img class="logo-image-size" src="images/logo.jpg" alt="logo"></a>
-		</div>
-		<div class="clearfix"> </div>
+	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-md-offset-4 col-lg-offset-4 col-sm-offset-4 col-xs-offset-4">
+		<a href="index.html" class="logo-image"><img class="logo-image-size" src="images/logo.jpg" alt="logo"></a>
 	</div>
+	<div class="clearfix"> </div>
 
 	<div class="container-fluid header-navigation" style="margin-bottom: 10px;">
 		<div class="navigationbar navigationbar-default">
 			<div class="row navigation navigationbar-nav">
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="index.html">Home</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="index.php">Home</a></div>
 				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="services.html">Services</a></div>
 				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="gallery.html">Gallery</a></div>
 				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="about.html">About</a></div>
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="login.html">Login</a></div>
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="register.html">Register</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="login.php">Login</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="register.php">Register</a></div>
 			</div>
 		</div>
 	</div>
@@ -78,27 +110,20 @@
             <div class="wrap">
                 <p class="form-title">
                     Sign Up</p>
-                <form class="register">
-                <input type="fname" placeholder="First name">
-                <input type="lname" placeholder="Last name">
-                <input type="text" placeholder="Username" />
-                <input type="password" placeholder="Password" />
-                <input type="confirmpassword" placeholder="ConfirmPassword" />
-                <input type="email" placeholder="Email" />
-                <input type="submit" value="Sign Up" class="btn btn-success btn-sm" />
+                <form class="register" name="registerinfo" id="registerinfo" method="POST" action="" onSubmit="return checkValidRegister()">
+                <input type="fname" name="fname" placeholder="First name"><div id="errfname"></div>
+                <input type="lname" name="lname" placeholder="Last name">
+                <input type="username" name="username" placeholder="Username" />
+                <input type="password" name="password" placeholder="Password" />
+                <input type="password" name="confirmpassword" placeholder="ConfirmPassword" />
+                <input type="email" name="email" placeholder="Email" />
+                <input type="submit" name="action" value="register" class="btn btn-success btn-sm" />
 
                 </form>
             </div>
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
 
 <!--footer-->
 	<div class="footer">

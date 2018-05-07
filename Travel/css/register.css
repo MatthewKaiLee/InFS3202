@@ -26,7 +26,7 @@ form
     margin: 0 auto;
 }
 
-form.register input[type="text"], form.register input[type="password"], form.register input[type="confirmpassword"], form.register input[type="fname"], form.register input[type="lname"],
+form.register input[type="text"], form.register input[type="password"], form.register input[type="username"], form.register input[type="fname"], form.register input[type="lname"],
 form.register input[type="email"]
 {
     width: 100%;
