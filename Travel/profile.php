@@ -1,6 +1,15 @@
 <?php
 	session_start();
-	if(!isset($_SESSION["username"])) {
+	require("connectDatabaseObject.php");
+	if(isset($_SESSION["username"])) {
+		$username = $_SESSION["username"];
+		$sql_query = "SELECT Firstname, LastName, Username, Email FROM customer Where username = ?";
+		$stmt_object = $db_link -> prepare($sql_query);
+		$stmt_object -> bind_param("s", $username);
+		$stmt_object -> execute();
+		$result = $stmt_object -> get_result();
+		$row_result = $result -> fetch_row();
+	} else {
 		header("Location: index.php");
 	}
 ?>
@@ -80,8 +89,17 @@
 <div class="container register-form">
 			<ol class="breadcrumb breadco">
 				<li><a href="#">Home</a></li>
-				<li class="active">Register</li>
+				<li class="active">Profile</li>
 			</ol>
+	<?php 
+		if (isset($_SESSION["username"])) {
+			echo "<h1>Customer Information</h1>";
+			echo "<p>First name:".$row_result[0]."</p>";
+			echo "<p>Last name:".$row_result[1]."</p>";
+			echo "<p>Username:".$row_result[2]."</p>";
+			echo "<p>Email:".$row_result[3]."</p>";
+		} else {
+	?>
     <div class="row">
         <div class="col-md-12">
             <div class="wrap">
@@ -99,7 +117,11 @@
             </div>
         </div>
     </div>
+    <?php 
+	}
+?>
 </div>
+
 
 <!--footer-->
 	<div class="footer">

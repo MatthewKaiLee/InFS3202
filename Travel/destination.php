@@ -1,6 +1,15 @@
 <?php
 	session_start();
 	require("logout.php");
+	require("connectDatabaseObject.php");
+	if($_GET["destination"]) {
+		$sql_query = "SELECT username, password FROM customer Where username = ?";
+		$stmt_object = $db_link -> prepare($sql_query);
+		$stmt_object -> bind_param("s", $username);
+		$stmt_object -> execute();
+		$result = $stmt_object -> get_result();
+		if ($row_result = $result -> fetch_row()) {}
+	}
 ?>
 
 <!DOCTYPE html>
@@ -26,6 +35,7 @@
 
 <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,100,100italic,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+
 
 
 
@@ -80,16 +90,6 @@
 			  <li><a href="index.html">Home</a></li>
 			  <li class="active">About Us</li>
 			</ol>
-
-
-			<div id="map" style="height: 200px; width: 100%;">
-				
-			</div>
-
-
-
-
-
 			<div class="about-grids">
 				<div class="col-md-12 about-grid">
 					<h3>About Us</h3>
@@ -292,9 +292,6 @@
 <!--//footer-->	
 <!-- for bootstrap working -->
 		<script src="js/bootstrap.js"> </script>
-		<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwQeUa5F6g3oYRVZvOcx1PtmvKE0CAZ2o&callback=initMap">
-    </script>
 <!-- //for bootstrap working -->
 </body>
 </html>
