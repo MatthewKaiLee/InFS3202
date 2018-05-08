@@ -1288,6 +1288,9 @@ p.aut,.history-right p{
 	.logo {
 		/*margin-left: 4.5em;*/
 	}
+	.top-nav {
+		margin-bottom: 10px;
+	}
 	.navigation > div > a {
 		padding: 20px 20px;
 	}
@@ -1349,6 +1352,9 @@ p.aut,.history-right p{
 	}
 	.search {
 		width: 27%;
+	}
+	.bot-nav {
+		margin-bottom: 10px;
 	}
 	.navigationbar-nav {
 		margin-left: 1em;

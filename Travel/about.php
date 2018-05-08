@@ -1,3 +1,8 @@
+<?php
+	session_start();
+	require("logout.php");
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,21 +25,39 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 	
 <body>
-<!-- header -->
-	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-md-offset-4 col-lg-offset-4 col-sm-offset-4 col-xs-offset-4">
-		<a href="index.html" class="logo-image"><img class="logo-image-size" src="images/logo.jpg" alt="logo"></a>
+	<!-- header -->
+	<div>
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-md-offset-4 col-lg-offset-4 col-sm-offset-4 col-xs-offset-4">
+			<a href="index.php" class="logo-image"><img class="logo-image-size" src="images/logo.jpg" alt="logo"></a>
+		</div>
+			<?php
+			if(isset($_SESSION["username"])) {
+				echo "<div class=\"logo-right\">
+							<ul>
+								<li><a>".$_SESSION["username"]."</a></li>
+							</ul>
+						</div>";
+			}
+		?>
 	</div>
 	<div class="clearfix"> </div>
 
 	<div class="container-fluid header-navigation" style="margin-bottom: 10px;">
 		<div class="navigationbar navigationbar-default">
 			<div class="row navigation navigationbar-nav">
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="index.html">Home</a></div>
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="services.html">Services</a></div>
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="gallery.html">Gallery</a></div>
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="about.html">About</a></div>
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="login.html">Login</a></div>
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="register.html">Register</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="index.php">Home</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="services.php">Services</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="gallery.php">Gallery</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="about.php">About</a></div>
+				<?php
+				if(!isset($_SESSION["username"])) {
+					echo "<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4\"><a href=\"login.php\">Login</a></div>
+					<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4\"><a href=\"register.php\">Register</a></div>";
+				} else {
+					echo "<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4\"><a href=\"profile.php\">Profile</a></div>
+					<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4\"><a href=\"index.php?logout=true\">Logout</a></div>";
+				}
+				?>
 			</div>
 		</div>
 	</div>

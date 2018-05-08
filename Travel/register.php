@@ -51,20 +51,6 @@
 <!-- js -->
 <script src="js/jquery-1.11.1.min.js"></script>
 <!-- //js -->
-<!-- FlexSlider -->
-<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
-<script defer src="js/jquery.flexslider.js"></script>
-<script type="text/javascript">
-						$(window).load(function(){
-						  $('.flexslider').flexslider({
-							animation: "slide",
-							start: function(slider){
-							  $('body').removeClass('loading');
-							}
-						  });
-						});
-					  </script>
-<!-- //FlexSlider -->
 <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,100,100italic,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 
@@ -75,20 +61,38 @@
 	
 <body>
 	<!-- header -->
-	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-md-offset-4 col-lg-offset-4 col-sm-offset-4 col-xs-offset-4">
-		<a href="index.html" class="logo-image"><img class="logo-image-size" src="images/logo.jpg" alt="logo"></a>
+	<div>
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-md-offset-4 col-lg-offset-4 col-sm-offset-4 col-xs-offset-4">
+			<a href="index.php" class="logo-image"><img class="logo-image-size" src="images/logo.jpg" alt="logo"></a>
+		</div>
+			<?php
+			if(isset($_SESSION["username"])) {
+				echo "<div class=\"logo-right\">
+							<ul>
+								<li><a>".$_SESSION["username"]."</a></li>
+							</ul>
+						</div>";
+			}
+		?>
 	</div>
-	<div class="clearfix"> </div>
+		<div class="clearfix"> </div>
 
 	<div class="container-fluid header-navigation" style="margin-bottom: 10px;">
 		<div class="navigationbar navigationbar-default">
 			<div class="row navigation navigationbar-nav">
 				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="index.php">Home</a></div>
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="services.html">Services</a></div>
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="gallery.html">Gallery</a></div>
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="about.html">About</a></div>
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="login.php">Login</a></div>
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="register.php">Register</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="services.php">Services</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="gallery.php">Gallery</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="about.php">About</a></div>
+				<?php
+				if(!isset($_SESSION["username"])) {
+					echo "<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4\"><a href=\"login.php\">Login</a></div>
+					<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4\"><a href=\"register.php\">Register</a></div>";
+				} else {
+					echo "<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4\"><a href=\"profile.php\">Profile</a></div>
+					<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4\"><a href=\"index.php?logout=true\">Logout</a></div>";
+				}
+				?>
 			</div>
 		</div>
 	</div>
@@ -110,16 +114,15 @@
             <div class="wrap">
                 <p class="form-title">
                     Sign Up</p>
-                <form class="register" name="registerinfo" id="registerinfo" method="POST" action="" onSubmit="return checkValidRegister()">
-                <input type="fname" name="fname" placeholder="First name"><div id="errfname"></div>
-                <input type="lname" name="lname" placeholder="Last name">
-                <input type="username" name="username" placeholder="Username" />
-                <input type="password" name="password" placeholder="Password" />
-                <input type="password" name="confirmpassword" placeholder="ConfirmPassword" />
-                <input type="email" name="email" placeholder="Email" />
-                <input type="submit" name="action" value="register" class="btn btn-success btn-sm" />
-
-                </form>
+                    <form class="register" name="registerinfo" id="registerinfo" method="POST" action="" onSubmit="return checkValidRegister()">
+                    	<input type="fname" name="fname" placeholder="First name"><div class="errMsg" name="errfname" id="errfname"></div>
+                    	<input type="lname" name="lname" placeholder="Last name"><div class="errMsg" id="errlname"></div>
+                    	<input type="username" onkeyup="checkExistName(this.value)" name="username" placeholder="Username" /><div class="errMsg" id="errusername"></div>
+                    	<input type="password" name="password" placeholder="Password" /><div class="errMsg" id="errpassword"></div>
+                    	<input type="password" name="confirmpassword" placeholder="ConfirmPassword" /><div class="errMsg" id="errconfirmpassword"></div>
+                    	<input type="email" name="email" placeholder="Email" /><div class="errMsg" id="erremail"></div>
+                    	<input type="submit" name="action" value="register" class="btn btn-success btn-sm" />
+                    </form>
             </div>
         </div>
     </div>

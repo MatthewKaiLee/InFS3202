@@ -1,9 +1,6 @@
 <?php
 	session_start();
-	if(isset($_GET["logout"]) && ($_GET["logout"] == "true")) {
-		unset($_SESSION["username"]);
-		header("Location: index.php");
-	}
+	require("logout.php");
 ?>
 
 <!DOCTYPE html>
@@ -48,56 +45,62 @@
 	
 <body>
 	<div class="parallax">
-		<div class="fixed-banner">
-			<div class="container">
-				<div class="banner-info-grid">
-					<section class="slider">
-						<div class="flexslider">
-							<ul class="slides">
-								<li>
-									<div class="banner-info">
-										<h1>Welcome To Queensland Travel Agency !</h1>
-										<p>Queeensland Travel Agency is a company which provide luxury customize services for tourists. </p>
-										<div class="more">
-											<a href="about.html">Our Company</a>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="banner-info">
-										<h1>Have a nice preview of the Tourism Gallery !</h1>
-										<p>Haven't decide where to go yet? Just have a quick look of the tourism gallery.</p>
-										<div class="more">
-											<a href="gallery.html">Tourism Gallery</a>
-										</div>
+<!-- banner -->
+<div>
+	<div class="container">
+		<div class="banner-info-grid">
+			<section class="slider">
+				<div class="flexslider">
+					<ul class="slides">
+						<li>
+							<div class="banner-info">
+								<h1>Welcome To Queensland Travel Agency !</h1>
+								<p>Queeensland Travel Agency is a company which provide luxury customize services for tourists. </p>
+								<div class="more">
+									<a href="about.html">Our Company</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="banner-info">
+								<h1>Have a nice preview of the Tourism Gallery !</h1>
+								<p>Haven't decide where to go yet? Just have a quick look of the tourism gallery.</p>
+								<div class="more">
+									<a href="gallery.html">Tourism Gallery</a>
+								</div>
 
-									</div>
-								</li>
-								<li>
-									<div class="banner-info">
-										<h1>Choose your favourite package now !</h1>
-										<p>Check the popular package or services and planning your memorable experiences. </p>
-										<div class="more">
-											<a href="services.html">Our Services</a>
-										</div>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</section>
+							</div>
+						</li>
+						<li>
+							<div class="banner-info">
+								<h1>Choose your favourite package now !</h1>
+								<p>Check the popular package or services and planning your memorable experiences. </p>
+								<div class="more">
+									<a href="services.html">Our Services</a>
+								</div>
+							</div>
+						</li>
+					</ul>
 				</div>
-			</div>
+			</section>
 		</div>
+	</div>
+</div>
+<!-- //banner -->
 	</div>
 
 	<!-- header -->
-	<div class="row">
+	<div class="row1">
 		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-md-offset-4 col-lg-offset-4 col-sm-offset-4 col-xs-offset-4">
-			<a href="index.html" class="logo-image"><img class="logo-image-size" src="images/logo.jpg" alt="logo"></a>
+			<a href="index.php" class="logo-image"><img class="logo-image-size" src="images/logo.jpg" alt="logo"></a>
 		</div>
 			<?php
 			if(isset($_SESSION["username"])) {
-				echo "<div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-4\" style=\"padding-top:20px;\"><a>".$_SESSION["username"]."</a></div>";
+				echo "<div class=\"logo-right\">
+							<ul>
+								<li><a>".$_SESSION["username"]."</a></li>
+							</ul>
+						</div>";
 			}
 		?>
 	</div>
@@ -106,16 +109,16 @@
 	<div class="container-fluid header-navigation" style="margin-bottom: 10px;">
 		<div class="navigationbar navigationbar-default">
 			<div class="row navigation navigationbar-nav">
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="index.php">Home</a></div>
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="services.html">Services</a></div>
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="gallery.html">Gallery</a></div>
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="about.html">About</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4 top-nav"><a href="index.php">Home</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4 top-nav"><a href="services.php">Services</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4 top-nav"><a href="gallery.php">Gallery</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4 bot-nav"><a href="about.php">About</a></div>
 				<?php
 				if(!isset($_SESSION["username"])) {
-					echo "<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4\"><a href=\"login.php\">Login</a></div>
-					<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4\"><a href=\"register.php\">Register</a></div>";
+					echo "<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4 bot-nav\"><a href=\"login.php\">Login</a></div>
+					<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4 bot-nav\"><a href=\"register.php\">Register</a></div>";
 				} else {
-					echo "<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4\"><a href=\"login.html\">Profile</a></div>
+					echo "<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4\"><a href=\"profile.php\">Profile</a></div>
 					<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4\"><a href=\"index.php?logout=true\">Logout</a></div>";
 				}
 				?>
@@ -170,7 +173,7 @@
 <div class="banner-bottom container" id="destination">
 		<h3>Choose your favour destination Today !</h3>
 	      <div class="row">
-        <div class="col-lg-5 col-md-5 col-sm-12 portfolio-item col-lg-offset-1 col-md-offset-1 col-sm-offset-1">
+        <div class="col-lg-5 col-md-5 col-sm-12 portfolio-item col-lg-offset-1 col-md-offset-1 col-sm-offset-1 mt-4">
           <div class="card h-100">
             <a href="brisbane.html"><img class="card-img-top" src="images/brisbane.jpg" alt="Brisbane"></a>
             <div class="card-body">
@@ -181,7 +184,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-5 col-md-5 col-sm-12 portfolio-item">
+        <div class="col-lg-5 col-md-5 col-sm-12 portfolio-item mt-4">
           <div class="card h-100">
             <a href="goldcoast.html"><img class="card-img-top" src="images/goldcoast.jpg" alt="Gold Coast"></a>
             <div class="card-body">
@@ -192,7 +195,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-5 col-md-5 col-sm-12 portfolio-item col-lg-offset-1 col-md-offset-1 col-sm-offset-1">
+        <div class="col-lg-5 col-md-5 col-sm-12 portfolio-item col-lg-offset-1 col-md-offset-1 col-sm-offset-1 mt-4">
           <div class="card h-100">
             <a href="sunshinecoast.html"><img class="card-img-top" src="images/sunshinecoast.jpg" alt="Sunshine Coast"></a>
             <div class="card-body">
@@ -203,7 +206,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-5 col-md-5 col-sm-12 portfolio-item">
+        <div class="col-lg-5 col-md-5 col-sm-12 portfolio-item mt-4">
           <div class="card h-100">
             <a href="cairns.html"><img class="card-img-top" src="images/cairns.jpg" alt="Cairns"></a>
             <div class="card-body">

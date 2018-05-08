@@ -1,58 +1,14 @@
-<?php 
-session_start();
-/*require("connectdatabase.php");
-$seldb = @mysqli_select_db($db_link, "infs3202");
-if(!isset($_SESSION["username"]) && !isset($_SESSION["password"])) {
-	if(isset($_POST["username"]) && isset($_POST["password"]) && $_POST["username"]!="" && $_POST["password"] != "") {
-		$username= $_POST["username"];
-		$sql_query = "SELECT username, password FROM customer Where username = '".$username."'";
-		echo $sql_query;
-		$result = mysqli_query($db_link, $sql_query);
-		echo "<br>";
-		if($row_result = mysqli_fetch_row($result)) {
-			if($row_result[0] == $_POST["username"] && $row_result[1] == $_POST["password"]) {
-				$_SESSION["username"] = $username;
-
-				header("Location: index.php");
-			} else {
-				header("Location: login.php");
-			}
-		} else {
-			header("Location: login.php");
-		}
-
-	}
-}*/
-
-	require("connectDatabaseObject.php");
-	if(!isset($_SESSION["username"]) && !isset($_SESSION["password"])) {
-		if(isset($_POST["username"]) && isset($_POST["password"]) && $_POST["username"]!="" && $_POST["password"] != "") {
-			$username= $_POST["username"];
-			$sql_query = "SELECT username, password FROM customer Where username = ?";
-			$stmt_object = $db_link -> prepare($sql_query);
-			$stmt_object -> bind_param("s", $username);
-			$stmt_object -> execute();
-			$result = $stmt_object -> get_result();
-			if ($row_result = $result -> fetch_row()) {
-				//echo "res1 ".$row_result[0]." res2 ".$row_result[1]."<br>";
-				if(password_verify($_POST["password"],$row_result[1])) {
-					$_SESSION["username"] = $username;
-					header("Location: index.php");
-				}
-			}
-		}
-	}
-	if(isset($_GET["logout"]) && ($_GET["logout"] == "true")) {
-		unset($_SESSION["username"]);
-		header("Location: logout.php");
+<?php
+	session_start();
+	if(!isset($_SESSION["username"])) {
+		header("Location: index.php");
 	}
 ?>
-
 
 <!DOCTYPE html>
 <html>
 <head>
-<title>Login</title>
+<title>register</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -64,29 +20,14 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["password"])) {
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 
-<link href="css/login.css" rel="stylesheet" type="text/css"/>
+<link href="css/register.css" rel="stylesheet" type="text/css"/>
 <!-- js -->
 <script src="js/jquery-1.11.1.min.js"></script>
-<script src="js/login.js"></script>
 <!-- //js -->
-<!-- FlexSlider -->
-<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
-<script defer src="js/jquery.flexslider.js"></script>
-<script type="text/javascript">
-						$(window).load(function(){
-						  $('.flexslider').flexslider({
-							animation: "slide",
-							start: function(slider){
-							  $('body').removeClass('loading');
-							}
-						  });
-						});
-					  </script>
-<!-- //FlexSlider -->
 <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,100,100italic,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 
-
+<script src="js/register.js" type="text/javascript"></script>
 
 
 </head>
@@ -107,7 +48,8 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["password"])) {
 			}
 		?>
 	</div>
-	<div class="clearfix"> </div>
+		<div class="clearfix"> </div>
+
 	<div class="container-fluid header-navigation" style="margin-bottom: 10px;">
 		<div class="navigationbar navigationbar-default">
 			<div class="row navigation navigationbar-nav">
@@ -126,54 +68,35 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["password"])) {
 				?>
 			</div>
 		</div>
-	</div><!-- //header -->
+	</div>
+<!-- //header -->
+
 <!-- banner -->
 	<div class="banner1">
 	</div>
 <!-- //banner -->
-			
 
-<div class="container login-form">
-	<ol class="breadcrumb breadco">
+
+<div class="container register-form">
+			<ol class="breadcrumb breadco">
 				<li><a href="#">Home</a></li>
-				<li class="active">Login</li>
+				<li class="active">Register</li>
 			</ol>
     <div class="row">
         <div class="col-md-12">
-
             <div class="wrap">
                 <p class="form-title">
-                    Sign In</p>
-                    <form class="login" method="POST" action="login.php">
-                    	<input type="text" name ="username" id="username" placeholder="Username" />
-                    	<input type="password" name="password" id="password" placeholder="Password" />
-                    	<input type="submit" value="Sign In" class="btn btn-success btn-sm" />
-                    	<div class="remember-forgot">
-                    		<div class="row">
-                    			<div class="col-md-6 col-xs-6 ">
-                    				<div class="checkbox">
-                    					<label>
-                    						<input type="checkbox" />
-                    						Remember Me
-                    					</label>
-                    				</div>
-                    			</div>
-                        <!--<div class="col-md-6 col-xs-6 forgot-pass-content">
-                            <a href="javascription:void(0)" class="forgot-pass">Forgot Password</a>
-                        </div>-->
-                    </div>
-                </div>
-            </form>
+                    Change Information</p>
+                    <form class="register" name="registerinfo" id="registerinfo" method="POST" action="" onSubmit="return checkValidRegister()">
+                    	<input type="fname" name="fname" placeholder="First name"><div class="errMsg" name="errfname" id="errfname"></div>
+                    	<input type="lname" name="lname" placeholder="Last name"><div class="errMsg" id="errlname"></div>
+                    	<input type="username" onkeyup="checkExistName(this.value)" name="username" placeholder="Username" /><div class="errMsg" id="errusername"></div>
+                    	<input type="password" name="password" placeholder="Password" /><div class="errMsg" id="errpassword"></div>
+                    	<input type="password" name="confirmpassword" placeholder="ConfirmPassword" /><div class="errMsg" id="errconfirmpassword"></div>
+                    	<input type="email" name="email" placeholder="Email" /><div class="errMsg" id="erremail"></div>
+                    	<input type="submit" name="action" value="register" class="btn btn-success btn-sm" />
+                    </form>
             </div>
-            <!--<div class="pr-wrap">
-                <div class="pass-reset">
-                    <label>
-                        Enter the email you signed up with</label>
-                    <input type="email" placeholder="Email" />
-                    <input type="submit" value="Submit" class="pass-reset-submit btn btn-success btn-sm" />
-                </div>
-            </div>-->
-
         </div>
     </div>
 </div>
@@ -218,7 +141,7 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["password"])) {
 	</div>
 	<div class="footer-bottom">
 		<div class="container">		
-			<p>Copyright &copy; 2018.UQ</p>	
+			<p>Copyright &copy; 2017.UQ</p>					
 		</div>
 	</div>
 <!--//footer-->	
