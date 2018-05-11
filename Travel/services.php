@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Login</title>
+<title>Services</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -100,37 +100,35 @@
 				<div class="services-grd">
 					<div class="col-md-4 services-grd1">
 						<div class="col-xs-3 services-grd1-left">
-							<span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span>
 						</div>
 						<div class="col-xs-9 services-grd1-right">
-							<h4>At vero eos et accusamus et iusto repellendus</h4>
-							<p> Nam libero tempore, cum soluta nobis est eligendi optio 
-								cumque nihil impedit quo minus id quod maxime placeat facere 
-								possimus.</p>
+							<h4>Travel Insurance</h4>
+							<p>Our company supplies the travel insurance services; customers 
+							can add it into the package with only few dollars.</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
 					<div class="col-md-4 services-grd1">
 						<div class="col-xs-3 services-grd1-left">
-							<span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
 						</div>
 						<div class="col-xs-9 services-grd1-right">
-							<h4>At vero eos et accusamus et iusto repellendus</h4>
-							<p> Nam libero tempore, cum soluta nobis est eligendi optio 
-								cumque nihil impedit quo minus id quod maxime placeat facere 
-								possimus.</p>
+							<h4>Group Tickets Discount</h4>
+							<p> If you are large customer groups, we highly recommend you to apply 
+							for the group ticket discount which can customize the package participant 
+							sizes and have a 10-30% total price discount.</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
 					<div class="col-md-4 services-grd1">
 						<div class="col-xs-3 services-grd1-left">
-							<span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 						</div>
 						<div class="col-xs-9 services-grd1-right">
-							<h4>At vero eos et accusamus et iusto repellendus</h4>
-							<p> Nam libero tempore, cum soluta nobis est eligendi optio 
-								cumque nihil impedit quo minus id quod maxime placeat facere 
-								possimus.</p>
+							<h4>Membership Loyalty System</h4>
+							<p>Become our member today, you can obtain discount 
+							for every package you purchased and the loyalty point.</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
@@ -139,37 +137,35 @@
 				<div class="services-grd">
 					<div class="col-md-4 services-grd1">
 						<div class="col-xs-3 services-grd1-left">
-							<span class="glyphicon glyphicon-hourglass" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
 						</div>
 						<div class="col-xs-9 services-grd1-right">
-							<h4>At vero eos et accusamus et iusto repellendus</h4>
-							<p> Nam libero tempore, cum soluta nobis est eligendi optio 
-								cumque nihil impedit quo minus id quod maxime placeat facere 
-								possimus.</p>
+							<h4>Customise Package Design</h4>
+							<p> Feeling annoy for normal travel package with many shopping section? Just
+							design it yourself, talk to our staff and design what you actually want.</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
 					<div class="col-md-4 services-grd1">
 						<div class="col-xs-3 services-grd1-left">
-							<span class="glyphicon glyphicon-cloud" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
 						</div>
 						<div class="col-xs-9 services-grd1-right">
-							<h4>At vero eos et accusamus et iusto repellendus</h4>
-							<p> Nam libero tempore, cum soluta nobis est eligendi optio 
-								cumque nihil impedit quo minus id quod maxime placeat facere 
-								possimus.</p>
+							<h4>Gifts Card and voucher</h4>
+							<p> Queensland Travel Agent always post some articles with some voucher code,
+							share and get the discount. If you really like our package, we offer gifts card
+							for you to share with your friends.</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
 					<div class="col-md-4 services-grd1">
 						<div class="col-xs-3 services-grd1-left">
-							<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-king" aria-hidden="true"></span>
 						</div>
 						<div class="col-xs-9 services-grd1-right">
-							<h4>At vero eos et accusamus et iusto repellendus</h4>
-							<p> Nam libero tempore, cum soluta nobis est eligendi optio 
-								cumque nihil impedit quo minus id quod maxime placeat facere 
-								possimus.</p>
+							<h4>Memorable Souvenir</h4>
+							<p> Your every tourist in our company, we offered the special memorable souvenir for
+							you. Come and collect the souvenir set as soon as possible.</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
@@ -177,7 +173,7 @@
 				</div>
 			</div>
 			<div class="services-overview">
-				<h3>Services Overview</h3>
+				<h3>Popular Packages</h3>
 				<div class="services-overview-grids">
 					<div class="col-md-4 services-overview-grid">
 						<div class="services-overview-grd">
@@ -314,7 +310,7 @@
 				<div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
 					<h3>Find out more</h3>					
 					<ul>
-						<li><a href="contact.html">Contact</a></li>
+						<li><a href="contact.php">Contact</a></li>
 						<li><a href="https://blog.queensland.com/">Blog</a></li>
 						<li><a href="cart.html">Cart</a></li>
 						<li><a href="order.html">Purchased Order</a></li>

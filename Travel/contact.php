@@ -30,12 +30,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="container-fluid header-navigation" style="margin-bottom: 10px;">
 		<div class="navigationbar navigationbar-default">
 			<div class="row navigation navigationbar-nav">
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="index.html">Home</a></div>
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="services.html">Services</a></div>
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="gallery.html">Gallery</a></div>
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="about.html">About</a></div>
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="login.html">Login</a></div>
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="register.html">Register</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="index.php">Home</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="services.php">Services</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="gallery.php">Gallery</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="about.php">About</a></div>
+				<?php
+				if(!isset($_SESSION["username"])) {
+					echo "<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4\"><a href=\"login.php\">Login</a></div>
+					<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4\"><a href=\"register.php\">Register</a></div>";
+				} else {
+					echo "<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4\"><a href=\"profile.php\">Profile</a></div>
+					<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4\"><a href=\"index.php?logout=true\">Logout</a></div>";
+				}
+				?>
 			</div>
 		</div>
 	</div>
@@ -123,7 +130,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
 					<h3>Find out more</h3>					
 					<ul>
-						<li><a href="contact.html">Contact</a></li>
+						<li><a href="contact.php">Contact</a></li>
 						<li><a href="https://blog.queensland.com/">Blog</a></li>
 						<li><a href="cart.html">Cart</a></li>
 						<li><a href="order.html">Purchased Order</a></li>
@@ -145,7 +152,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 	<div class="footer-bottom">
 		<div class="container">		
-			<p>Copyright &copy; 2017.UQ</p>					
+			<p>Copyright &copy; 2018.UQ</p>					
 		</div>
 	</div>
 <!--//footer-->	
