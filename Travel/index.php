@@ -44,24 +44,36 @@
 </head>
 	
 <body>
-	<div class="parallax">
-<!-- banner -->
+<?php 
+	if(!isset($_SESSION["username"])) {
+		echo "<div class=\"parallax\">
 <div>
-	<div class="container">
-		<div class="banner-info-grid">
-			<section class="slider">
-				<div class="flexslider">
-					<ul class="slides">
+	<div class=\"container\">
+		<div class=\"banner-info-grid\">
+			<section class=\"slider\">
+				<div class=\"flexslider\">
+					<ul class=\"slides\">
 						<li>
-							<div class="banner-info">
+							<div class=\"banner-info\">
 								<h1>Welcome To Queensland Travel Agency !</h1>
 								<p>Queeensland Travel Agency is a company which provide luxury customize services for tourists. </p>
-								<div class="more">
-									<a href="about.html">Our Company</a>
+								<div class=\"more\">
+									<a href=\"about.php\">Our Company</a>
 								</div>
 							</div>
 						</li>
-						<li>
+
+					</ul>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>
+	</div>";
+	}
+?>
+
+						<!--<li>
 							<div class="banner-info">
 								<h1>Have a nice preview of the Tourism Gallery !</h1>
 								<p>Haven't decide where to go yet? Just have a quick look of the tourism gallery.</p>
@@ -79,16 +91,7 @@
 									<a href="services.html">Our Services</a>
 								</div>
 							</div>
-						</li>
-					</ul>
-				</div>
-			</section>
-		</div>
-	</div>
-</div>
-<!-- //banner -->
-	</div>
-
+						</li>-->
 	<!-- header -->
 	<div class="row1">
 		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-md-offset-4 col-lg-offset-4 col-sm-offset-4 col-xs-offset-4">
@@ -127,37 +130,39 @@
 	</div>
 <!-- //header -->
 <!-- banner -->
-<!--<div class="banner">
-	<div class="container">
-		<div class="banner-info-grid">
-			<section class="slider">
-				<div class="flexslider">
-					<ul class="slides">
+<?php
+	if(isset($_SESSION["username"])) {
+		echo "<div class=\"banner\">
+	<div class=\"container\">
+		<div class=\"banner-info-grid\">
+			<section class=\"slider\">
+				<div class=\"flexslider\">
+					<ul class=\"slides\">
 						<li>
-							<div class="banner-info">
+							<div class=\"banner-info\">
 								<h1>Welcome To Queensland Travel Agency !</h1>
 								<p>Queeensland Travel Agency is a company which provide luxury customize services for tourists. </p>
-								<div class="more">
-									<a href="about.html">Our Company</a>
+								<div class=\"more\">
+									<a href=\"about.php\">Our Company</a>
 								</div>
 							</div>
 						</li>
 						<li>
-							<div class="banner-info">
+							<div class=\"banner-info\">
 								<h1>Have a nice preview of the Tourism Gallery !</h1>
 								<p>Haven't decide where to go yet? Just have a quick look of the tourism gallery.</p>
-								<div class="more">
-									<a href="gallery.html">Tourism Gallery</a>
+								<div class=\"more\">
+									<a href=\"gallery.php\">Tourism Gallery</a>
 								</div>
 
 							</div>
 						</li>
 						<li>
-							<div class="banner-info">
+							<div class=\"banner-info\">
 								<h1>Choose your favourite package now !</h1>
 								<p>Check the popular package or services and planning your memorable experiences. </p>
-								<div class="more">
-									<a href="services.html">Our Services</a>
+								<div class=\"more\">
+									<a href=\"services.php\">Our Services</a>
 								</div>
 							</div>
 						</li>
@@ -166,7 +171,10 @@
 			</section>
 		</div>
 	</div>
-</div>-->
+</div>";
+	}
+?>
+
 <!-- //banner -->
 
 <!-- banner-bottom -->
@@ -239,7 +247,7 @@
 				<div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
 					<h3>Find out more</h3>					
 					<ul>
-						<li><a href="contact.html">Contact</a></li>
+						<li><a href="contact.php">Contact</a></li>
 						<li><a href="https://blog.queensland.com/">Blog</a></li>
 						<li><a href="cart.html">Cart</a></li>
 						<li><a href="order.html">Purchased Order</a></li>

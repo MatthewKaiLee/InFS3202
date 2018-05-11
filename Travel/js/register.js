@@ -96,7 +96,9 @@ function checkExistName(string) {
 		var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("errusername").innerHTML = this.responseText;
+            	var xml = this.responseXML;
+            	var response = xml.getElementsByTagName("response");
+                document.getElementById("errusername").innerHTML = response[0].getAttribute("text");
             }
         };
         xmlhttp.open("GET", "existuser.php?query=" + string, true);

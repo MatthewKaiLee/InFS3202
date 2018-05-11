@@ -36,7 +36,7 @@
 <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,100,100italic,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 
-<script src="js/register.js" type="text/javascript"></script>
+<script src="js/profile.js" type="text/javascript"></script>
 
 
 </head>
@@ -91,16 +91,109 @@
 				<li><a href="#">Home</a></li>
 				<li class="active">Profile</li>
 			</ol>
+
+			<div>
+				<div class="row">
+					<div class="col-md-3 col-xs-3" style="background-color:black;">
+						<div >
+							<button onclick="userProfile()" class="col-md-12">User Profile</button>
+							<button onclick="editProfile()" class="col-md-12">Edit Profile</button>
+							<a href="profile.php?changepassword=true" class="col-md-12">Change Password</a>
+						</div>
+					</div>
+					<div class="col-md-9 col-xs-9" id="profile">
+						<h3>Edit Profile</h3>
+						<hr>
+						<div class="col-md-12">
+							<h4 class="col-md-4">First Name:</h4>
+							<div class="col-md-4"><?php echo $row_result[0];?></div>
+						</div>
+						<div class="col-md-12">
+							<h4 class="col-md-4">Last Name:</h4>
+							<div class="col-md-4"><?php echo $row_result[1];?></div>
+						</div>
+						<div class="col-md-12">
+							<h4 class="col-md-4">Userame:</h4>
+							<div class="col-md-4"><?php echo $row_result[2];?></div>
+						</div>
+						<div class="col-md-12">
+							<h4 class="col-md-4">Email:</h4>
+							<div class="col-md-4"><?php echo $row_result[3];?></div>
+						</div>
+					</div>
+				</div>
+			</div>
 	<?php 
-		if (isset($_SESSION["username"])) {
-			echo "<h1>Customer Information</h1>";
+		/*if (!isset($_GET["changepassword"]) &&  !isset($_GET["profile"]) || isset($_GET["profile"]) && $_GET["profile"] == "true") {
+			echo "<div class=\"row\">
+					<div class=\"col-md-3 col-xs-3\" style=\"background-color:black;\">
+						<div >
+							<a href=\"profile.php?profile=true\" class=\"col-md-12\">User Profile</a>
+							<a href=\"profile.php?profile=true\" class=\"col-md-12\">Edit Profile</a>
+							<a href=\"profile.php?changepassword=true\" class=\"col-md-12\">Change Password</a>
+						</div>
+					</div>
+					<div class=\"col-md-9 col-xs-9\">
+						<h3>Edit Profile</h3>
+						<hr>
+						<div class=\"col-md-12\">
+							<h4 class=\"col-md-4\">First Name:</h4>
+							<div class=\"col-md-4\">".$row_result[0]."</div>
+						</div>
+						<div class=\"col-md-12\">
+							<h4 class=\"col-md-4\">Last Name:</h4>
+							<div class=\"col-md-4\">".$row_result[1]."</div>
+						</div>
+						<div class=\"col-md-12\">
+							<h4 class=\"col-md-4\">Userame:</h4>
+							<div class=\"col-md-4\">".$row_result[2]."</div>
+						</div>
+						<div class=\"col-md-12\">
+							<h4 class=\"col-md-4\">Email:</h4>
+							<div class=\"col-md-4\">".$row_result[3]."</div>
+						</div>
+					</div>
+				</div>";
+			/*echo "<h1>Customer Information</h1>";
 			echo "<p>First name:".$row_result[0]."</p>";
 			echo "<p>Last name:".$row_result[1]."</p>";
 			echo "<p>Username:".$row_result[2]."</p>";
 			echo "<p>Email:".$row_result[3]."</p>";
-		} else {
-	?>
-    <div class="row">
+			echo "<button>Edit Profile</button>";*/
+	/*	} else {
+		
+		echo "<div class=\"row\">
+					<div class=\"col-md-3 col-xs-3\" style=\"background-color:black;\">
+						<div >
+							<a href=\"profile.php?profile=true\" class=\"col-md-12\">User Profile</a>
+							<a href=\"profile.php?profile=true\" class=\"col-md-12\">Edit Profile</a>
+							<a href=\"profile.php?changepassword=true\" class=\"col-md-12\">Change Password</a>
+						</div>
+					</div>
+					<div class=\"col-md-9 col-xs-9\">
+						<h3>Change Password</h3>
+						<hr>
+						<div class=\"col-md-12\">
+							<h4 class=\"col-md-4\">First Name:</h4>
+							<input class=\"col-md-4\" placeholder=\"$row_result[0]\">
+						</div>
+						<div class=\"col-md-12\">
+							<h4 class=\"col-md-4\">Last Name:</h4>
+							<input class=\"col-md-4\" placeholder=\"$row_result[1]\">
+						</div>
+						<div class=\"col-md-12\">
+							<h4 class=\"col-md-4\">Userame:</h4>
+							<div class=\"col-md-4\">".$row_result[2]."</div>
+						</div>
+						<div class=\"col-md-12\">
+							<h4 class=\"col-md-4\">Email:</h4>
+							<input class=\"col-md-4\" placeholder=\"$row_result[3]\">
+						</div>
+					</div>
+				</div>";
+
+
+/*    <!--<div class="row">
         <div class="col-md-12">
             <div class="wrap">
                 <p class="form-title">
@@ -116,9 +209,9 @@
                     </form>
             </div>
         </div>
-    </div>
-    <?php 
-	}
+    </div>-->
+*/
+	//}
 ?>
 </div>
 

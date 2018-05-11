@@ -21,7 +21,7 @@
 <link href="css/login.css" rel="stylesheet" type="text/css"/>
 <!-- js -->
 <script src="js/jquery-1.11.1.min.js"></script>
-<script src="js/map.js"></script>
+
 <!-- //js -->
 
 <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,100,100italic,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
@@ -80,14 +80,6 @@
 			  <li><a href="index.html">Home</a></li>
 			  <li class="active">About Us</li>
 			</ol>
-
-
-			<div id="map" style="height: 200px; width: 100%;">
-				
-			</div>
-
-
-
 
 
 			<div class="about-grids">
@@ -292,9 +284,7 @@
 <!--//footer-->	
 <!-- for bootstrap working -->
 		<script src="js/bootstrap.js"> </script>
-		<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwQeUa5F6g3oYRVZvOcx1PtmvKE0CAZ2o&callback=initMap">
-    </script>
+
 <!-- //for bootstrap working -->
 </body>
 </html>
