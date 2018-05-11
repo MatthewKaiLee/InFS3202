@@ -198,40 +198,33 @@
 			<div class="col-lg-6 col-md-12 history-left">	
 				<h3>Our Standards</h3>
 				<div class="history-left-grid">
-					<p><i class="glyphicon glyphicon-calendar" aria-hidden="true"></i>21.9.2015</p>
-					<h4>consequatur aut perferendis</h4>
-					<p class="aut">Itaque earum rerum hic tenetur a sapiente delectus,
-						ut aut reiciendis voluptatibus maiores alias consequatur voluptates repudiandae sint et 
-						molestiae non recusandae aut perferendis.</p>
+					<h4>Consummate Customer Services</h4>
+					<p class="aut">Our customer service department would supply a completed customer services
+					from before purchase till after sales. We offer package research & recommend, customize package & special events design, multi-payment acceptance, date change & package alternative and other after-sales services.
+					</p>
 				</div>
 				<div class="history-left-grid">
-					<p><i class="glyphicon glyphicon-calendar" aria-hidden="true"></i>28.9.2015</p>
-					<h4>consequatur aut perferendis</h4>
-					<p class="aut">Itaque earum rerum hic tenetur a sapiente delectus,
-						ut aut reiciendis voluptatibus maiores alias consequatur voluptates repudiandae sint et 
-						molestiae non recusandae aut perferendis.</p>
+					<h4>Customize Package Design & Special Events</h4>
+					<p class="aut">Feeling bored about the normal package? We offer the customize travel package which can satisfy what you actually need and give you a great deal of it. Going to have a travel party or honeymoon holiday? We also offer some 2 peoples or few peoples package with only little price increased.</p>
 				</div>
 				<div class="history-left-grid">
-					<p><i class="glyphicon glyphicon-calendar" aria-hidden="true"></i>03.8.2015</p>
-					<h4>consequatur aut perferendis</h4>
-					<p class="aut">Itaque earum rerum hic tenetur a sapiente delectus,
-						ut aut reiciendis voluptatibus maiores alias consequatur voluptates repudiandae sint et 
-						molestiae non recusandae aut perferendis.</p>
+					<h4>Flexible time & more frequently Package Events</h4>
+					<p class="aut">Flexible time & more frequently Package Events
+					Are you quite busy and without many available time but still love travelling? Choose us, our packages especially short term packages have flexible time with more frequently happen date which mean you can have more available date to start with.
+					</p>
 				</div>
 			</div>
 			<div class="col-lg-6 col-md-12 history-right">
 				<h3>What We Offer</h3>
-				<h4>voluptatibus maiores alias</h4>
-				<p>To take a trivial example, which of us ever undertakes laborious physical 
-					exercise, except to obtain some advantage from it? But who has any right to 
-					find fault with a man who chooses to enjoy a pleasure.</p>
+				<h4>Special services and offers</h4>
+				<p>Life has travel, travel always belong to life. People may encounter many difficulties in their life, why not just escape and have a memorable experience travel, and keep your happiness.</p>
 				<ul>
-					<li><a href="#">recusandae aut perferendis</a></li>
-					<li><a href="#">voluptatibus maiores alias</a></li>
-					<li><a href="#">molestiae non recusandae</a></li>
-					<li><a href="#">alias consequatur voluptates</a></li>
-					<li><a href="#">tenetur a sapiente delectus</a></li>
-					<li><a href="#">earum rerum hic tenetur</a></li>
+					<li><a href="#">Travel Insurance</a></li>
+					<li><a href="#">Group Tickets Discount</a></li>
+					<li><a href="#">Membership Loyalty System</a></li>
+					<li><a href="#">Customise Package Design</a></li>
+					<li><a href="#">Gifts Card and voucher</a></li>
+					<li><a href="#">Memorable Souvenir</a></li>
 				</ul>
 			</div>
 			<div class="clearfix"> </div>
@@ -256,7 +249,7 @@
 				<div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
 					<h3>Find out more</h3>					
 					<ul>
-						<li><a href="contact.html">Contact</a></li>
+						<li><a href="contact.php">Contact</a></li>
 						<li><a href="https://blog.queensland.com/">Blog</a></li>
 						<li><a href="cart.html">Cart</a></li>
 						<li><a href="order.html">Purchased Order</a></li>
