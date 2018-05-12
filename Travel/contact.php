@@ -1,3 +1,16 @@
+<?php 
+	session_start();
+	require("connectDatabaseObject.php");
+	require("logout.php");
+
+	if(isset($_POST["action"]) && $_POST["action"] == "send" && isset($_POST["name"]) && $_POST["name"] != "" && isset($_POST["email"]) && $_POST["email"] != "" && isset($_POST["message"]) && $_POST["message"] != "") {
+		$mailto = $_POST["email"];
+		$mailSubject = "QTA MAIL";
+		$mailHeader = "From: QTA\r\n";
+		$mailContent = "Thank you your mail!";
+		mail($mailto, $mailSubject, $mailContent, $mailHeader);
+	}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,8 +35,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 <body>
 <!-- header -->
-	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-md-offset-4 col-lg-offset-4 col-sm-offset-4 col-xs-offset-4">
-		<a href="index.html" class="logo-image"><img class="logo-image-size" src="images/logo.jpg" alt="logo"></a>
+	<div>
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-md-offset-4 col-lg-offset-4 col-sm-offset-4 col-xs-offset-4">
+			<a href="index.php" class="logo-image"><img class="logo-image-size" src="images/logo.jpg" alt="logo"></a>
+		</div>
+			<?php
+			if(isset($_SESSION["username"])) {
+				echo "<div class=\"logo-right\">
+							<ul>
+								<li><a>".$_SESSION["username"]."</a></li>
+							</ul>
+						</div>";
+			}
+		?>
 	</div>
 	<div class="clearfix"> </div>
 
@@ -68,7 +92,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<h3>Our Branch</h3>
 			</div>
 		<div id="map" style="height: 400px; width: 100%;" class="col-md-12 mt-3 mb-4"></div>
-
+		<br>
+		<div class="row mt-3 mb-4">
 			<div class="col-md-3 contact-grid col-md-offset-2">
 				<div class="call">
 					<div class="col-xs-3 contact-grdl">
@@ -100,16 +125,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 			</div>
 			<div class="col-md-5 contact-grid">
-				<form>
-					<input type="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
-					<input type="email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
-					<textarea type="text"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Message...</textarea>
-					<input type="submit" value="Send" >
+				<form method="POST">
+					<input type="text" name="name" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
+					<input type="email" name="email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+					<textarea type="text" name="message" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Message...</textarea>
+					<input type="submit" name="action" value="Send" >
 				</form>
 			</div>
-			<div class="clearfix"> </div>
-			</div>
 		</div>
+			
+			
+			<div class="clearfix"> </div>
+		</div>
+	</div>
 	</div>
 <!-- contact -->
 <!--footer-->

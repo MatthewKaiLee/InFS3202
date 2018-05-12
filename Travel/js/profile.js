@@ -1,3 +1,15 @@
+function checkValidEdition() {
+    console.log("fun");
+    if(document.forms["profile"]["password"].value == "") {
+        alert("Password cannot be null");
+        document.forms["profile"]["password"].focus();
+        return false;
+    }
+    return true;
+}
+
+
+
 /*function userProfile(username) {
 	var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {

@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	require("connectDatabaseObject.php");
+	require("logout.php");
 	if(isset($_SESSION["username"])) {
 		$username = $_SESSION["username"];
 		$sql_query = "SELECT Firstname, LastName, Username, Email FROM customer Where username = ?";
@@ -10,6 +11,40 @@
 		$result = $stmt_object -> get_result();
 		$row_result = $result -> fetch_row();
 	} else {
+		header("Location: index.php");
+	}
+
+	if(isset($_POST["action"]) && $_POST["action"] == "update") {
+		$username = $_SESSION["username"];
+		$sql_query = "SELECT Firstname, LastName, Username, Password, Email FROM customer Where username = ?";
+		$stmt_object = $db_link -> prepare($sql_query);
+		$stmt_object -> bind_param("s", $username);
+		$stmt_object -> execute();
+		$result = $stmt_object -> get_result();
+		$row_result = $result -> fetch_row();
+		$firstname = $row_result[0];
+		$lastName = $row_result[1];
+		$password = $row_result[3];
+		$email = $row_result[4];
+		$stmt_object -> close();
+		
+		if(isset($_POST["fname"]) && $_POST["fname"] != "") {
+			$firstname = $_POST["fname"];
+		}
+		if(isset($_POST["lname"]) && $_POST["lname"] != "") {
+			$lastname = $_POST["lname"];
+		}
+		if(isset($_POST["password"]) && isset($_POST["ckpassword"]) && $_POST["password"] == $_POST["ckpassword"] && $_POST["password"] != ""  && $_POST["ckpassword"] != "") {
+			$password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+		}
+		if(isset($_POST["email"]) && $_POST["email"] != "") {
+			$email = $_POST["email"];
+		}
+		$update_query = "UPDATE customer SET Firstname=?, LastName=?,Password=?,Email=? Where Username=?";
+		$stmt_object = $db_link -> prepare($update_query);
+		$stmt_object -> bind_param("sssss",$firstname, $lastname, $password, $email, $username);
+		$stmt_object -> execute();
+		$stmt_object -> close();
 		header("Location: index.php");
 	}
 ?>
@@ -29,14 +64,22 @@
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 
-<link href="css/register.css" rel="stylesheet" type="text/css"/>
+<!--<link href="css/register.css" rel="stylesheet" type="text/css"/>-->
 <!-- js -->
 <script src="js/jquery-1.11.1.min.js"></script>
 <!-- //js -->
 <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,100,100italic,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 
-<script src="js/profile.js" type="text/javascript"></script>
+<script src="js/register.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+	function changepw() {
+		document.getElementById("changepassword").innerHTML = "<h4 class=\"col-md-4\">Comfirm Password:</h4><input class=\"col-md-4\" type=\"password\" name=\"newpassword\" placeholder=\"New Password\">";
+		document.getElementById("changepwbutton").style.display = "none";
+	}
+
+</script>
 
 
 </head>
@@ -92,25 +135,28 @@
 				<li class="active">Profile</li>
 			</ol>
 
-			<div>
+			<!--<form method="POST">-->
 				<div class="row">
-					<div class="col-md-3 col-xs-3" style="background-color:black;">
+					<!--<div class="col-md-3 col-xs-3" style="background-color:black;">
 						<div >
 							<button onclick="userProfile()" class="col-md-12">User Profile</button>
 							<button onclick="editProfile()" class="col-md-12">Edit Profile</button>
 							<a href="profile.php?changepassword=true" class="col-md-12">Change Password</a>
 						</div>
-					</div>
-					<div class="col-md-9 col-xs-9" id="profile">
+					</div>-->
+					<form method="POST" class="col-md-9 col-xs-9" name="profile" id="profile" onSubmit="return checkValidEdition()">
 						<h3>Edit Profile</h3>
 						<hr>
+						<p>Please fill in the information that you want to update</p>
 						<div class="col-md-12">
 							<h4 class="col-md-4">First Name:</h4>
-							<div class="col-md-4"><?php echo $row_result[0];?></div>
+							<input class="col-md-4" name="fname" placeholder=<?php echo "\"".$row_result[0]."\"";?>>
+							<div class="col-md-4" id="errfnamemsg"></div>
 						</div>
 						<div class="col-md-12">
 							<h4 class="col-md-4">Last Name:</h4>
-							<div class="col-md-4"><?php echo $row_result[1];?></div>
+							<input class="col-md-4" name="lname" placeholder=<?php echo "\"".$row_result[1]."\"";?>>
+							<div class="col-md-4" id="errlnamemsg"></div>
 						</div>
 						<div class="col-md-12">
 							<h4 class="col-md-4">Userame:</h4>
@@ -118,11 +164,24 @@
 						</div>
 						<div class="col-md-12">
 							<h4 class="col-md-4">Email:</h4>
-							<div class="col-md-4"><?php echo $row_result[3];?></div>
+							<input class="col-md-4" name="email" placeholder=<?php echo "\"".$row_result[3]."\"";?>>
+							<div class="col-md-4" id="erremailmsg"></div>
 						</div>
-					</div>
+						<div class="col-md-12">
+							<h4 class="col-md-4">New Password:</h4>
+							<input class="col-md-4" name="password" type="password" placeholder="Password">
+							<div class="col-md-4" id="errpwmsg"></div>
+						</div>
+						<div class="col-md-12">
+							<h4 class="col-md-4">Check Password:</h4>
+							<input class="col-md-4" name="ckpassword" type="password" placeholder="Password">
+							<div class="col-md-4" id="errckpwmsg"></div>
+						</div>
+						
+						<button type="submit" name="action" value="update" class="col-md-12">Update</button>
+					</form>
 				</div>
-			</div>
+			<!--</form>-->
 	<?php 
 		/*if (!isset($_GET["changepassword"]) &&  !isset($_GET["profile"]) || isset($_GET["profile"]) && $_GET["profile"] == "true") {
 			echo "<div class=\"row\">

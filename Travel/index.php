@@ -19,7 +19,7 @@
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!-- js -->
 <script src="js/jquery-1.11.1.min.js"></script>
-
+<script src="js/youtube.js"></script>
 <!-- //js -->
 <!-- FlexSlider -->
 <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
@@ -180,6 +180,24 @@
 <!-- banner-bottom -->
 <div class="banner-bottom container" id="destination">
 		<h3>Choose your favour destination Today !</h3>
+
+		<div class="container">
+
+			<iframe class="col-md-8 col-md-offset-2" style= "float:center" id="frame" width="480px" height="360px" src="https://www.youtube.com/embed/TMEdbG7G2tM" frameborder="0" allowfullscreen></iframe>	
+			<div class="col-md-4 col-md-offset-2">
+				<select name="places" id="place">
+				<option value="Queensland">Queensland</option>
+				<option value="Brisbane">Brisbane</option>
+				<option value="Gold Coast">Gold Coast</option>
+				<option value="Sunshine Coast">Sunshine Coast</option>
+				<option value="Carins">Carins</option>
+				</select>
+				<button class="" type="action" value="search" onclick="getSelectedPlace()">video</button>
+			</div>
+			
+		</div>
+		
+		<div class="container">
 	      <div class="row">
         <div class="col-lg-5 col-md-5 col-sm-12 portfolio-item col-lg-offset-1 col-md-offset-1 col-sm-offset-1 mt-4">
           <div class="card h-100">
@@ -226,6 +244,8 @@
           </div>
         </div>
       </div>
+      </div>
+      <!--container-->
 </div>
 
 <!-- //welcome-bottom -->

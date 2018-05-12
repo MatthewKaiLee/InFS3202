@@ -43,6 +43,7 @@ function checkValidRegister() {
 	}
 
 	if(!checkEmail(document.forms["registerinfo"]["email"].value)) {
+		document.getElementById("erremail").innerHTML =  "email is invalid!";
 		return false;
 	}
 	return true;
@@ -87,7 +88,7 @@ function checkEmail(email) {
 		document.getElementById("erremail").innerHTML =  "";
 		return true;
 	}
-	document.getElementById("erremail").innerHTML =  "email is invalid!";
+	
 	return false;
 }
 
@@ -104,4 +105,32 @@ function checkExistName(string) {
         xmlhttp.open("GET", "existuser.php?query=" + string, true);
         xmlhttp.send();
 	}
+}
+
+function checkValidEdition() {
+	if(document.forms["profile"]["fname"].value !="" && document.forms["profile"]["fname"].value.length > 20) {
+		document.getElementById("errfnamemsg").innerHTML = "First Name cannot be over 20 characters";
+        document.forms["profile"]["fname"].focus();
+        return false;
+	}
+	if(document.forms["profile"]["lname"].value !="" && document.forms["profile"]["lname"].value.length > 20) {
+		document.getElementById("errlnamemsg").innerHTML = "Last Name cannot be over 20 characters";
+        document.forms["profile"]["lname"].focus();
+        return false;
+	}
+
+    if(document.forms["profile"]["email"].value != "" && !checkEmail(document.forms["profile"]["email"].value)) {
+    	document.getElementById("erremailmsg").innerHTML = "email is invalid";
+    	document.forms["profile"]["email"].focus();
+        return false;
+    }
+
+    if(document.forms["profile"]["password"].value != "" && document.forms["profile"]["ckpassword"].value != "") {
+    	if(document.forms["profile"]["password"].value != document.forms["profile"]["ckpassword"].value) {
+    		document.getElementById("errckpwmsg").innerHTML = "the passwords are not match";
+    		document.forms["profile"]["ckpassword"].focus();
+    		return false;
+    	}
+    }
+    return true;
 }
