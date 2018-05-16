@@ -85,7 +85,7 @@
 			<div class="about-grids">
 				<div class="col-md-12 about-grid">
 					<h3>About Us</h3>
-					<img src="images/bne.jpg" alt="Brisbane Sign " class="img-responsive" />
+					<img src="images/bnelogo.jpg" alt="Brisbane Sign " class="img-responsive" />
 					<h4>Queensland Travel Agency (QTA)</h4>
 					<p>Queensland Travel Agency is a local tourist service company which focus on creating affordable advaentures for awesome humans in Queensland State. We've crossed borders to push boundaries, walked unfamiliar paths to find new friends, and got lost to discover the places we love.</p>
 				</div>
