@@ -73,33 +73,14 @@
 	}
 ?>
 
-						<!--<li>
-							<div class="banner-info">
-								<h1>Have a nice preview of the Tourism Gallery !</h1>
-								<p>Haven't decide where to go yet? Just have a quick look of the tourism gallery.</p>
-								<div class="more">
-									<a href="gallery.html">Tourism Gallery</a>
-								</div>
-
-							</div>
-						</li>
-						<li>
-							<div class="banner-info">
-								<h1>Choose your favourite package now !</h1>
-								<p>Check the popular package or services and planning your memorable experiences. </p>
-								<div class="more">
-									<a href="services.html">Our Services</a>
-								</div>
-							</div>
-						</li>-->
 	<!-- header -->
-	<div class="row1">
+	<div>
 		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-md-offset-4 col-lg-offset-4 col-sm-offset-4 col-xs-offset-4">
 			<a href="index.php" class="logo-image"><img class="logo-image-size" src="images/logo.jpg" alt="logo"></a>
 		</div>
 			<?php
 			if(isset($_SESSION["username"])) {
-				echo "<div class=\"logo-right\">
+				echo "<div class=\"logo-right\" id=\"logo\">
 							<ul>
 								<li><a>".$_SESSION["username"]."</a></li>
 							</ul>
@@ -183,14 +164,15 @@
 
 		<div class="container">
 
-			<iframe class="col-md-8 col-md-offset-2" style= "float:center" id="frame" width="480px" height="360px" src="https://www.youtube.com/embed/TMEdbG7G2tM" frameborder="0" allowfullscreen></iframe>	
-			<div class="col-md-4 col-md-offset-2">
+			<iframe class="col-md-8 col-md-offset-2 mt-4 col-sm-10 col-sm-offset-2"  id="frame" width="480px" height="360px" src="https://www.youtube.com/embed/TMEdbG7G2tM" frameborder="0" allowfullscreen></iframe>	
+			<div class="col-md-8 col-md-offset-2 mb-3 mt-4 col-sm-8 col-sm-offset-2 ">
+			<div class="col-md-4 col-md-offset-2 ">Please choose your place:</div>
 				<select name="places" id="place">
-				<option value="Queensland">Queensland</option>
-				<option value="Brisbane">Brisbane</option>
-				<option value="Gold Coast">Gold Coast</option>
-				<option value="Sunshine Coast">Sunshine Coast</option>
-				<option value="Carins">Carins</option>
+					<option value="Queensland">Queensland</option>
+					<option value="Brisbane">Brisbane</option>
+					<option value="Gold Coast">Gold Coast</option>
+					<option value="Sunshine Coast">Sunshine Coast</option>
+					<option value="Carins">Carins</option>
 				</select>
 				<button class="" type="action" value="search" onclick="getSelectedPlace()">video</button>
 			</div>
@@ -201,10 +183,10 @@
 	      <div class="row">
         <div class="col-lg-5 col-md-5 col-sm-12 portfolio-item col-lg-offset-1 col-md-offset-1 col-sm-offset-1 mt-4">
           <div class="card h-100">
-            <a href="brisbane.html"><img class="card-img-top" src="images/brisbane.jpg" alt="Brisbane"></a>
+            <a href="destination.php?destination=Brisbane"><img class="card-img-top" src="images/brisbane.jpg" alt="Brisbane"></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="#">Brisbane</a>
+                <a href="destination.php?destination=Brisbane">Brisbane</a>
               </h4>
               <p class="card-text">Combine art and outdoor adventure in Brisbane, where creative spaces, music and hip new restaurants meet pretty riverside gardens and man-made beaches.</p>
             </div>
@@ -212,10 +194,10 @@
         </div>
         <div class="col-lg-5 col-md-5 col-sm-12 portfolio-item mt-4">
           <div class="card h-100">
-            <a href="goldcoast.html"><img class="card-img-top" src="images/goldcoast.jpg" alt="Gold Coast"></a>
+            <a href="destination.php?destination=Gold Coast"><img class="card-img-top" src="images/goldcoast.jpg" alt="Gold Coast"></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="goldcoast.html">Gold Coast</a>
+                <a href="destination.php?destination=Gold Coast">Gold Coast</a>
               </h4>
               <p class="card-text">The Gold Coast's star attraction is its beaches, including the world-renowned stretch of sand at Surfers Paradise. Beyond the beaches, discover laid-back neighbourhoods, a booming culinary scene and the Gold Coast's famous theme parks.</p>
             </div>
@@ -223,10 +205,10 @@
         </div>
         <div class="col-lg-5 col-md-5 col-sm-12 portfolio-item col-lg-offset-1 col-md-offset-1 col-sm-offset-1 mt-4">
           <div class="card h-100">
-            <a href="sunshinecoast.html"><img class="card-img-top" src="images/sunshinecoast.jpg" alt="Sunshine Coast"></a>
+            <a href="destination.php?destination=Sunshine Coast"><img class="card-img-top" src="images/sunshinecoast.jpg" alt="Sunshine Coast"></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="sunshinecoast.html">Sunshine Coast</a>
+                <a href="destination.php?destination=Sunshine Coast">Sunshine Coast</a>
               </h4>
               <p class="card-text">Stretching from the coastal city of Caloundra, near , to the Great Sandy National Park in the north, the Sunshine Coast is home to pretty villages, renowned surf spots and spectacular rural hinterland.</p>
             </div>
@@ -234,10 +216,10 @@
         </div>
         <div class="col-lg-5 col-md-5 col-sm-12 portfolio-item mt-4">
           <div class="card h-100">
-            <a href="cairns.html"><img class="card-img-top" src="images/cairns.jpg" alt="Cairns"></a>
+            <a href="destination.php?destination=Cairns"><img class="card-img-top" src="images/cairns.jpg" alt="Cairns"></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="cairns.html">Cairns</a>
+                <a href="destination.php?destination=Cairns">Cairns</a>
               </h4>
               <p class="card-text">Visit Cairns for the Great Barrier Reef and Wet Tropics World Heritage Rainforest, but don't miss the great things to do in and around town. You'll find brilliant cafés, bustling markets and plenty of beaches nearby. Relax by a resort pool or spend your days exploring this tropical oasis.</p>
             </div>
@@ -257,39 +239,30 @@
 					<h3>Queensland Travel Agency</h3>
 					<h4>mail@qta.com.au</h4>>
 					<h4>(07) 3456 7890</h4>
-					<!--<ul class="social-icons">
-						<li><a href="#" class="p"></a></li>
-						<li><a href="#" class="in"></a></li>
-						<li><a href="#" class="v"></a></li>
-						<li><a href="#" class="facebook"></a></li>
-					</ul>-->
 				</div>
 				<div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
 					<h3>Find out more</h3>					
 					<ul>
 						<li><a href="contact.php">Contact</a></li>
 						<li><a href="https://blog.queensland.com/">Blog</a></li>
-						<li><a href="cart.html">Cart</a></li>
-						<li><a href="order.html">Purchased Order</a></li>
-
 					</ul>
 				</div>
-				<div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
-					<h3>Destination</h3>
-					<ul>
-						<li><a href="brisbane.html">Brisbane</a></li>
-						<li><a href="goldcoast.html">Gold Coast</a></li>
-						<li><a href="sunshinecoast.html">Sunshine Coast</a></li>
-						<li><a href="cairns.html">Cairns<a/></li>
-					</ul>
-				</div>
+        <div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
+          <h3>Destination</h3>
+          <ul>
+            <li><a href="destination.php?destination=Brisbane">Brisbane</a></li>
+            <li><a href="destination.php?destination=Gold Coast">Gold Coast</a></li>
+            <li><a href="destination.php?destination=Sunshine Coast">Sunshine Coast</a></li>
+            <li><a href="destination.php?destination=Cairns">Cairns<a/></li>
+          </ul>
+        </div>
 				<div class="clearfix"> </div>
 			</div>
 		</div>
 	</div>
 	<div class="footer-bottom">
 		<div class="container">		
-			<p>Copyright &copy; 2018.UQ</p>					
+			<p>Queensland Travel Agency &copy; QTA 2018. All rights reserved.</p>					
 		</div>
 	</div>
 <!--//footer-->	

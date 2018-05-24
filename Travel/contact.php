@@ -1,14 +1,17 @@
 <?php 
 	session_start();
 	require("connectDatabaseObject.php");
+	require("sendEmail.php");
 	require("logout.php");
 
-	if(isset($_POST["action"]) && $_POST["action"] == "send" && isset($_POST["name"]) && $_POST["name"] != "" && isset($_POST["email"]) && $_POST["email"] != "" && isset($_POST["message"]) && $_POST["message"] != "") {
-		$mailto = $_POST["email"];
+	if(isset($_POST["action"]) && $_POST["action"] == "Send" && isset($_POST["name"]) && $_POST["name"] != "" && isset($_POST["email"]) && $_POST["email"] != "" && isset($_POST["message"]) && $_POST["message"] != "") {
+		/*$mailto = $_POST["email"];
 		$mailSubject = "QTA MAIL";
 		$mailHeader = "From: QTA\r\n";
 		$mailContent = "Thank you your mail!";
-		mail($mailto, $mailSubject, $mailContent, $mailHeader);
+		mail($mailto, $mailSubject, $mailContent, $mailHeader);*/
+		sendMail($_POST["email"], $_POST["name"]);
+		header("Location: contact.php");
 	}
 ?>
 <!DOCTYPE html>
@@ -49,19 +52,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			}
 		?>
 	</div>
-	<div class="clearfix"> </div>
+		<div class="clearfix"> </div>
 
 	<div class="container-fluid header-navigation" style="margin-bottom: 10px;">
 		<div class="navigationbar navigationbar-default">
 			<div class="row navigation navigationbar-nav">
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="index.php">Home</a></div>
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="services.php">Services</a></div>
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="gallery.php">Gallery</a></div>
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="about.php">About</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4 top-nav"><a href="index.php">Home</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4 top-nav"><a href="services.php">Services</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4 top-nav"><a href="gallery.php">Gallery</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4 bot-nav"><a href="about.php">About</a></div>
 				<?php
 				if(!isset($_SESSION["username"])) {
-					echo "<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4\"><a href=\"login.php\">Login</a></div>
-					<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4\"><a href=\"register.php\">Register</a></div>";
+					echo "<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4 bot-nav\"><a href=\"login.php\">Login</a></div>
+					<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4 bot-nav\"><a href=\"register.php\">Register</a></div>";
 				} else {
 					echo "<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4\"><a href=\"profile.php\">Profile</a></div>
 					<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4\"><a href=\"index.php?logout=true\">Logout</a></div>";
@@ -76,69 +79,71 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 <!-- //banner -->
 <!-- contact -->
-	<div class="contact about">
-		
-		<!--<div class="map">
-			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3144.899142009709!2d23.72354!3d37.979482999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1bd238977fb45%3A0xbdf5a6106a003293!2sFashion+Workshop+by+Vicky+Kaya!5e0!3m2!1sen!2sin!4v1440569426817" frameborder="0" style="border:0" allowfullscreen></iframe>
-		</div>-->
+<div class="contact about">
 		<div class="contact-grids">
-	        <div class="container">
-			<ol class="breadcrumb breadco">
-			  <li><a href="index.html">Home</a></li>
-			  <li class="active">Contact Us</li>
-			</ol>
+			<div class="container">
+				<ol class="breadcrumb breadco">
+					<li><a href="index.php">Home</a></li>
+					<li class="active">Contact Us</li>
+				</ol>
 
-			<div class="col-md-12 about-grid">
-				<h3>Our Branch</h3>
-			</div>
-		<div id="map" style="height: 400px; width: 100%;" class="col-md-12 mt-3 mb-4"></div>
-		<br>
-		<div class="row mt-3 mb-4">
-			<div class="col-md-3 contact-grid col-md-offset-2">
-				<div class="call">
-					<div class="col-xs-3 contact-grdl">
-						<span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+				<div class="col-md-12 about-grid mb-3">
+					<h3>Our Branch</h3>
+				</div>
+				<div class="container mt-4">
+					<div id="map" style="height: 400px; width: 100%;" class="col-md-12 mt-3 mb-4"></div>
+				</div>
+				
+				<br>
+				<div class="container mt-3 mb-4">
+				<div class="row">
+					<div class="col-md-3 contact-grid col-md-offset-2">
+						<div class="call">
+							<div class="col-xs-3 contact-grdl">
+								<span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+							</div>
+							<div class="col-xs-9 contact-grdr">
+								<h4>(07) 3456 7890</h4>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="address">
+							<div class="col-xs-3 contact-grdl">
+								<span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+							</div>
+							<div class="col-xs-9 contact-grdr">
+								<ul>
+									<h4>123 Fake Street, Brisbane City.</h4>	
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+							<div class="mail">
+								<div class="col-xs-3 contact-grdl">
+									<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+								</div>
+								<div class="col-xs-9 contact-grdr">
+									<h4>mail@qta.com.au</h4>
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+						</div>
+						<div class="col-md-5 contact-grid">
+							<form method="POST">
+								<input type="text" name="name" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
+								<input type="email" name="email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+								<textarea type="text" name="message" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Message...</textarea>
+								<input type="submit" name="action" value="Send" >
+							</form>
+						</div>
 					</div>
-					<div class="col-xs-9 contact-grdr">
-					<h4>(07) 3456 7890</h4>
-					</div>
+				</div>
+
+
+
 					<div class="clearfix"> </div>
 				</div>
-				<div class="address">
-					<div class="col-xs-3 contact-grdl">
-						<span class="glyphicon glyphicon-send" aria-hidden="true"></span>
-					</div>
-					<div class="col-xs-9 contact-grdr">
-						<ul>
-							<h4>123 Fake Street, Brisbane City.</h4>	
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="mail">
-					<div class="col-xs-3 contact-grdl">
-						<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-					</div>
-					<div class="col-xs-9 contact-grdr">
-							<h4>mail@qta.com.au</h4>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-			</div>
-			<div class="col-md-5 contact-grid">
-				<form method="POST">
-					<input type="text" name="name" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
-					<input type="email" name="email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
-					<textarea type="text" name="message" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Message...</textarea>
-					<input type="submit" name="action" value="Send" >
-				</form>
 			</div>
 		</div>
-			
-			
-			<div class="clearfix"> </div>
-		</div>
-	</div>
-	</div>
 <!-- contact -->
 <!--footer-->
 	<div class="footer">
@@ -148,39 +153,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<h3>Queensland Travel Agency</h3>
 					<h4>mail@qta.com.au</h4>>
 					<h4>(07) 3456 7890</h4>
-					<!--<ul class="social-icons">
-						<li><a href="#" class="p"></a></li>
-						<li><a href="#" class="in"></a></li>
-						<li><a href="#" class="v"></a></li>
-						<li><a href="#" class="facebook"></a></li>
-					</ul>-->
 				</div>
 				<div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
 					<h3>Find out more</h3>					
 					<ul>
 						<li><a href="contact.php">Contact</a></li>
 						<li><a href="https://blog.queensland.com/">Blog</a></li>
-						<li><a href="cart.html">Cart</a></li>
-						<li><a href="order.html">Purchased Order</a></li>
-
 					</ul>
 				</div>
-				<div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
-					<h3>Destination</h3>
-					<ul>
-						<li><a href="brisbane.html">Brisbane</a></li>
-						<li><a href="goldcoast.html">Gold Coast</a></li>
-						<li><a href="sunshinecoast.html">Sunshine Coast</a></li>
-						<li><a href="cairns.html">Cairns<a/></li>
-					</ul>
-				</div>
+        <div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
+          <h3>Destination</h3>
+          <ul>
+            <li><a href="destination.php?destination=Brisbane">Brisbane</a></li>
+            <li><a href="destination.php?destination=Gold Coast">Gold Coast</a></li>
+            <li><a href="destination.php?destination=Sunshine Coast">Sunshine Coast</a></li>
+            <li><a href="destination.php?destination=Cairns">Cairns<a/></li>
+          </ul>
+        </div>
 				<div class="clearfix"> </div>
 			</div>
 		</div>
 	</div>
 	<div class="footer-bottom">
 		<div class="container">		
-			<p>Copyright &copy; 2018.UQ</p>					
+			<p>Queensland Travel Agency &copy; QTA 2018. All rights reserved.</p>					
 		</div>
 	</div>
 <!--//footer-->	

@@ -1,12 +1,49 @@
 <?php
-	session_start();
-	require("logout.php");
+session_start();
+require("logout.php");
+require("connectDatabaseObject.php");
+/*require("simple_html_dom.php");
+$sql_query = "CREATE TABLE IF NOT EXISTS webscraping (
+    PersonID int,
+    LastName varchar(255),
+    FirstName varchar(255),
+    Address varchar(255),
+    City image
+);";
+$stmt_object = $db_link -> prepare($sql_query);
+$stmt_object -> execute();
+
+$html = file_get_html('https://www.ytravelblog.com/things-to-do-in-queensland/');
+foreach($html->find('article') as $key => $e) {
+	if($key == 0) {
+		$resulth3 = array();
+		$h3Array = $e->find('h3');
+		$imgArray = $e->find('img[class=size-full]');
+		foreach($h3Array as $num => $h3) {
+			if($num < count($imgArray)){
+				echo $h3."<br>";
+								//echo $imgArray[$num];
+				$resulth3 = $h3;
+			}
+
+		}
+		$pArray = $e->find('p');
+		$resultimg = array();
+		foreach($pArray as $p) {
+			foreach($p->find('img') as $i) {
+				$resultimg = $i;
+				echo $i;
+			}
+		}
+					}
+
+				}*/
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-<title>Login</title>
+<title>Gallery</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -61,19 +98,19 @@
 			}
 		?>
 	</div>
-	<div class="clearfix"> </div>
+		<div class="clearfix"> </div>
 
 	<div class="container-fluid header-navigation" style="margin-bottom: 10px;">
 		<div class="navigationbar navigationbar-default">
 			<div class="row navigation navigationbar-nav">
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="index.php">Home</a></div>
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="services.php">Services</a></div>
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="gallery.php">Gallery</a></div>
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="about.php">About</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4 top-nav"><a href="index.php">Home</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4 top-nav"><a href="services.php">Services</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4 top-nav"><a href="gallery.php">Gallery</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4 bot-nav"><a href="about.php">About</a></div>
 				<?php
 				if(!isset($_SESSION["username"])) {
-					echo "<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4\"><a href=\"login.php\">Login</a></div>
-					<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4\"><a href=\"register.php\">Register</a></div>";
+					echo "<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4 bot-nav\"><a href=\"login.php\">Login</a></div>
+					<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4 bot-nav\"><a href=\"register.php\">Register</a></div>";
 				} else {
 					echo "<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4\"><a href=\"profile.php\">Profile</a></div>
 					<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4\"><a href=\"index.php?logout=true\">Logout</a></div>";
@@ -91,45 +128,68 @@
 	<div class="gallery">
 		<div class="container">
 			<ol class="breadcrumb breadco">
-				<li><a href="index.html">Home</a></li>
+				<li><a href="index.php">Home</a></li>
 				<li class="active">Photo Gallery</li>
 			</ol>
 			<h3>Photo Gallery</h3>
+			<?php
+			/*foreach($resulth3 as $num => $h3) {
+				echo $h3."<br>";
+			}
+			foreach($resultimg as $number => $img) {
+				echo $img;
+			}*/
+			?>
 			<div class="gallery-grids">
 				<div class="gallery-grid">
-					<a href="images/11.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
-						<img src="images/11.jpg" alt=" " class="img-responsive" />
+					<a href="images/B01.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
+						<img src="images/B01.jpg" alt=" " class="img-responsive" />
 					</a>
-					<a href="images/7.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
-						<img src="images/7.jpg" alt=" " class="img-responsive" />
+					<a href="images/B02.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
+						<img src="images/B02.jpg" alt=" " class="img-responsive" />
 					</a>
-					<a href="images/6.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
-						<img src="images/6.jpg" alt=" " class="img-responsive" />
-					</a>
-				</div>
-				<div class="gallery-grid">
-					<a href="images/8.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
-						<img src="images/8.jpg" alt=" " class="img-responsive" />
-					</a>
-					<a href="images/13.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
-						<img src="images/13.jpg" alt=" " class="img-responsive" />
-					</a>
-					<a href="images/14.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
-						<img src="images/14.jpg" alt=" " class="img-responsive" />
-					</a>
-					<a href="images/10.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
-						<img src="images/10.jpg" alt=" " class="img-responsive" />
+					<a href="images/B03.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
+						<img src="images/B03.jpg" alt=" " class="img-responsive" />
 					</a>
 				</div>
 				<div class="gallery-grid">
-					<a href="images/15.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
-						<img src="images/15.jpg" alt=" " class="img-responsive" />
+					<a href="images/G01.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
+						<img src="images/G01.jpg" alt=" " class="img-responsive" />
 					</a>
-					<a href="images/16.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
-						<img src="images/16.jpg" alt=" " class="img-responsive" />
+					<a href="images/G02.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
+						<img src="images/G02.jpg" alt=" " class="img-responsive" />
 					</a>
-					<a href="images/12.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
-						<img src="images/12.jpg" alt=" " class="img-responsive" />
+					<a href="images/G03.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
+						<img src="images/G03.jpg" alt=" " class="img-responsive" />
+					</a>
+
+				</div>
+				<div class="gallery-grid">
+					<a href="images/S01.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
+						<img src="images/S01.jpg" alt=" " class="img-responsive" />
+					</a>
+					<a href="images/S02.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
+						<img src="images/S02.jpg" alt=" " class="img-responsive" />
+					</a>
+					<a href="images/G03.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
+						<img src="images/S03.jpg" alt=" " class="img-responsive" />
+					</a>
+
+				</div>
+				<div class="gallery-grid">
+					<a href="images/C01.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
+						<img src="images/C01.jpg" alt=" " class="img-responsive" />
+					</a>
+				</div>
+				<div class="gallery-grid">
+					<a href="images/C02.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
+						<img src="images/C02.jpg" alt=" " class="img-responsive" />
+					</a>
+				</div>
+				<div class="gallery-grid">
+
+					<a href="images/CO3.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
+						<img src="images/CO3.jpg" alt=" " class="img-responsive" />
 					</a>
 				</div>
 				<div class="clearfix"> </div>
@@ -155,39 +215,30 @@
 					<h3>Queensland Travel Agency</h3>
 					<h4>mail@qta.com.au</h4>>
 					<h4>(07) 3456 7890</h4>
-					<!--<ul class="social-icons">
-						<li><a href="#" class="p"></a></li>
-						<li><a href="#" class="in"></a></li>
-						<li><a href="#" class="v"></a></li>
-						<li><a href="#" class="facebook"></a></li>
-					</ul>-->
 				</div>
 				<div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
 					<h3>Find out more</h3>					
 					<ul>
-						<li><a href="contact.html">Contact</a></li>
+						<li><a href="contact.php">Contact</a></li>
 						<li><a href="https://blog.queensland.com/">Blog</a></li>
-						<li><a href="cart.html">Cart</a></li>
-						<li><a href="order.html">Purchased Order</a></li>
-
 					</ul>
 				</div>
-				<div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
-					<h3>Destination</h3>
-					<ul>
-						<li><a href="brisbane.html">Brisbane</a></li>
-						<li><a href="goldcoast.html">Gold Coast</a></li>
-						<li><a href="sunshinecoast.html">Sunshine Coast</a></li>
-						<li><a href="cairns.html">Cairns<a/></li>
-					</ul>
-				</div>
+        <div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
+          <h3>Destination</h3>
+          <ul>
+            <li><a href="destination.php?destination=Brisbane">Brisbane</a></li>
+            <li><a href="destination.php?destination=Gold Coast">Gold Coast</a></li>
+            <li><a href="destination.php?destination=Sunshine Coast">Sunshine Coast</a></li>
+            <li><a href="destination.php?destination=Cairns">Cairns<a/></li>
+          </ul>
+        </div>
 				<div class="clearfix"> </div>
 			</div>
 		</div>
 	</div>
 	<div class="footer-bottom">
 		<div class="container">		
-			<p>Copyright &copy; 2017.UQ</p>					
+			<p>Queensland Travel Agency &copy; QTA 2018. All rights reserved.</p>					
 		</div>
 	</div>
 <!--//footer-->	

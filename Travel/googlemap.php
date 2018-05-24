@@ -1,7 +1,7 @@
 <?php
 $username="root";
 $password="";
-$database="test";
+$database="infs3202";
 
 function parseToXML($htmlStr)
 {

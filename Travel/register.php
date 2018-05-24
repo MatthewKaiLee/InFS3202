@@ -1,15 +1,5 @@
 <?php
-	/*function checkValue($value, $type) {
-		if($type == "string") {
-			if ($value != "") {
-				$value = filter_var($value, FILTER_SANITIZE_MAGIC_QUOTES);
-			} else {
-				$value = "";
-			}
-		} else if($type == "int") {
 
-		}
-	}*/
 	session_start();
 	if(isset($_POST["action"]) && $_POST["action"] == "register") {
 		require("connectDatabaseObject.php");
@@ -80,14 +70,14 @@
 	<div class="container-fluid header-navigation" style="margin-bottom: 10px;">
 		<div class="navigationbar navigationbar-default">
 			<div class="row navigation navigationbar-nav">
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="index.php">Home</a></div>
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="services.php">Services</a></div>
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="gallery.php">Gallery</a></div>
-				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4"><a href="about.php">About</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4 top-nav"><a href="index.php">Home</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4 top-nav"><a href="services.php">Services</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4 top-nav"><a href="gallery.php">Gallery</a></div>
+				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4 bot-nav"><a href="about.php">About</a></div>
 				<?php
 				if(!isset($_SESSION["username"])) {
-					echo "<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4\"><a href=\"login.php\">Login</a></div>
-					<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4\"><a href=\"register.php\">Register</a></div>";
+					echo "<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4 bot-nav\"><a href=\"login.php\">Login</a></div>
+					<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4 bot-nav\"><a href=\"register.php\">Register</a></div>";
 				} else {
 					echo "<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4\"><a href=\"profile.php\">Profile</a></div>
 					<div class=\"col-md-4 col-lg-2 col-xs-12 col-sm-4\"><a href=\"index.php?logout=true\">Logout</a></div>";
@@ -106,7 +96,7 @@
 
 <div class="container register-form">
 			<ol class="breadcrumb breadco">
-				<li><a href="#">Home</a></li>
+				<li><a href="index.php">Home</a></li>
 				<li class="active">Register</li>
 			</ol>
     <div class="row">
@@ -136,39 +126,30 @@
 					<h3>Queensland Travel Agency</h3>
 					<h4>mail@qta.com.au</h4>>
 					<h4>(07) 3456 7890</h4>
-					<!--<ul class="social-icons">
-						<li><a href="#" class="p"></a></li>
-						<li><a href="#" class="in"></a></li>
-						<li><a href="#" class="v"></a></li>
-						<li><a href="#" class="facebook"></a></li>
-					</ul>-->
 				</div>
 				<div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
 					<h3>Find out more</h3>					
 					<ul>
-						<li><a href="contact.html">Contact</a></li>
+						<li><a href="contact.php">Contact</a></li>
 						<li><a href="https://blog.queensland.com/">Blog</a></li>
-						<li><a href="cart.html">Cart</a></li>
-						<li><a href="order.html">Purchased Order</a></li>
-
 					</ul>
 				</div>
-				<div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
-					<h3>Destination</h3>
-					<ul>
-						<li><a href="brisbane.html">Brisbane</a></li>
-						<li><a href="goldcoast.html">Gold Coast</a></li>
-						<li><a href="sunshinecoast.html">Sunshine Coast</a></li>
-						<li><a href="cairns.html">Cairns<a/></li>
-					</ul>
-				</div>
+        <div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
+          <h3>Destination</h3>
+          <ul>
+            <li><a href="destination.php?destination=Brisbane">Brisbane</a></li>
+            <li><a href="destination.php?destination=Gold Coast">Gold Coast</a></li>
+            <li><a href="destination.php?destination=Sunshine Coast">Sunshine Coast</a></li>
+            <li><a href="destination.php?destination=Cairns">Cairns<a/></li>
+          </ul>
+        </div>
 				<div class="clearfix"> </div>
 			</div>
 		</div>
 	</div>
 	<div class="footer-bottom">
 		<div class="container">		
-			<p>Copyright &copy; 2017.UQ</p>					
+			<p>Queensland Travel Agency &copy; QTA 2018. All rights reserved.</p>					
 		</div>
 	</div>
 <!--//footer-->	

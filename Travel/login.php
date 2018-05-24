@@ -1,51 +1,28 @@
 <?php 
 session_start();
-/*require("connectdatabase.php");
-$seldb = @mysqli_select_db($db_link, "infs3202");
+
+require("connectDatabaseObject.php");
 if(!isset($_SESSION["username"]) && !isset($_SESSION["password"])) {
 	if(isset($_POST["username"]) && isset($_POST["password"]) && $_POST["username"]!="" && $_POST["password"] != "") {
 		$username= $_POST["username"];
-		$sql_query = "SELECT username, password FROM customer Where username = '".$username."'";
-		echo $sql_query;
-		$result = mysqli_query($db_link, $sql_query);
-		echo "<br>";
-		if($row_result = mysqli_fetch_row($result)) {
-			if($row_result[0] == $_POST["username"] && $row_result[1] == $_POST["password"]) {
-				$_SESSION["username"] = $username;
-
-				header("Location: index.php");
-			} else {
-				header("Location: login.php");
-			}
-		} else {
-			header("Location: login.php");
-		}
-
-	}
-}*/
-
-	require("connectDatabaseObject.php");
-	if(!isset($_SESSION["username"]) && !isset($_SESSION["password"])) {
-		if(isset($_POST["username"]) && isset($_POST["password"]) && $_POST["username"]!="" && $_POST["password"] != "") {
-			$username= $_POST["username"];
-			$sql_query = "SELECT username, password FROM customer Where username = ?";
-			$stmt_object = $db_link -> prepare($sql_query);
-			$stmt_object -> bind_param("s", $username);
-			$stmt_object -> execute();
-			$result = $stmt_object -> get_result();
-			if ($row_result = $result -> fetch_row()) {
+		$sql_query = "SELECT username, password FROM customer Where username = ?";
+		$stmt_object = $db_link -> prepare($sql_query);
+		$stmt_object -> bind_param("s", $username);
+		$stmt_object -> execute();
+		$result = $stmt_object -> get_result();
+		if ($row_result = $result -> fetch_row()) {
 				//echo "res1 ".$row_result[0]." res2 ".$row_result[1]."<br>";
-				if(password_verify($_POST["password"],$row_result[1])) {
-					$_SESSION["username"] = $username;
-					header("Location: index.php");
-				}
+			if(password_verify($_POST["password"],$row_result[1])) {
+				$_SESSION["username"] = $username;
+				header("Location: index.php");
 			}
 		}
 	}
-	if(isset($_GET["logout"]) && ($_GET["logout"] == "true")) {
-		unset($_SESSION["username"]);
-		header("Location: logout.php");
-	}
+}
+if(isset($_GET["logout"]) && ($_GET["logout"] == "true")) {
+	unset($_SESSION["username"]);
+	header("Location: logout.php");
+}
 ?>
 
 
@@ -135,7 +112,7 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["password"])) {
 
 <div class="container login-form">
 	<ol class="breadcrumb breadco">
-				<li><a href="#">Home</a></li>
+				<li><a href="index.php">Home</a></li>
 				<li class="active">Login</li>
 			</ol>
     <div class="row">
@@ -148,31 +125,9 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["password"])) {
                     	<input type="text" name ="username" id="username" placeholder="Username" />
                     	<input type="password" name="password" id="password" placeholder="Password" />
                     	<input type="submit" value="Sign In" class="btn btn-success btn-sm" />
-                    	<div class="remember-forgot">
-                    		<div class="row">
-                    			<div class="col-md-6 col-xs-6 ">
-                    				<div class="checkbox">
-                    					<label>
-                    						<input type="checkbox" />
-                    						Remember Me
-                    					</label>
-                    				</div>
-                    			</div>
-                        <!--<div class="col-md-6 col-xs-6 forgot-pass-content">
-                            <a href="javascription:void(0)" class="forgot-pass">Forgot Password</a>
-                        </div>-->
-                    </div>
-                </div>
+
             </form>
             </div>
-            <!--<div class="pr-wrap">
-                <div class="pass-reset">
-                    <label>
-                        Enter the email you signed up with</label>
-                    <input type="email" placeholder="Email" />
-                    <input type="submit" value="Submit" class="pass-reset-submit btn btn-success btn-sm" />
-                </div>
-            </div>-->
 
         </div>
     </div>
@@ -186,39 +141,30 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["password"])) {
 					<h3>Queensland Travel Agency</h3>
 					<h4>mail@qta.com.au</h4>>
 					<h4>(07) 3456 7890</h4>
-					<!--<ul class="social-icons">
-						<li><a href="#" class="p"></a></li>
-						<li><a href="#" class="in"></a></li>
-						<li><a href="#" class="v"></a></li>
-						<li><a href="#" class="facebook"></a></li>
-					</ul>-->
 				</div>
 				<div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
 					<h3>Find out more</h3>					
 					<ul>
-						<li><a href="contact.html">Contact</a></li>
+						<li><a href="contact.php">Contact</a></li>
 						<li><a href="https://blog.queensland.com/">Blog</a></li>
-						<li><a href="cart.html">Cart</a></li>
-						<li><a href="order.html">Purchased Order</a></li>
-
 					</ul>
 				</div>
-				<div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
-					<h3>Destination</h3>
-					<ul>
-						<li><a href="brisbane.html">Brisbane</a></li>
-						<li><a href="goldcoast.html">Gold Coast</a></li>
-						<li><a href="sunshinecoast.html">Sunshine Coast</a></li>
-						<li><a href="cairns.html">Cairns<a/></li>
-					</ul>
-				</div>
+        <div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
+          <h3>Destination</h3>
+          <ul>
+            <li><a href="destination.php?destination=Brisbane">Brisbane</a></li>
+            <li><a href="destination.php?destination=Gold Coast">Gold Coast</a></li>
+            <li><a href="destination.php?destination=Sunshine Coast">Sunshine Coast</a></li>
+            <li><a href="destination.php?destination=Cairns">Cairns<a/></li>
+          </ul>
+        </div>
 				<div class="clearfix"> </div>
 			</div>
 		</div>
 	</div>
 	<div class="footer-bottom">
 		<div class="container">		
-			<p>Copyright &copy; 2018.UQ</p>	
+			<p>Queensland Travel Agency &copy; QTA 2018. All rights reserved.</p>					
 		</div>
 	</div>
 <!--//footer-->	
