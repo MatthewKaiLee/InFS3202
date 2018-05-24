@@ -2,7 +2,7 @@
   session_start();
   require("connectDatabaseObject.php");
   if(isset($_GET["package"]) && $_GET["package"] != "") {
-    $sql_query = "SELECT `package`.`Name`, `package`.`Description`, `package`.`ImageS`, Price, Stock FROM package Where `package`.`Name` = ?";
+    $sql_query = "SELECT `package`.`Name`, `package`.`Description`, `package`.`ImageLocation`, Price, Stock FROM package Where `package`.`Name` = ?";
     $stmt_object = $db_link -> prepare($sql_query);
     $stmt_object -> bind_param("s", $_GET["package"]);
     $stmt_object -> execute();
@@ -100,7 +100,7 @@
         <div class="col-lg-12">
 
           <div class="card mt-4">
-            <?php echo '<img class="card-img-top img-fluid" style="height:100%; width:100%;" src="data:image/jpeg;base64,'.base64_encode( $row_result[2] ).'"/>';?>
+            <?php echo '<img class="card-img-top img-fluid" style="height:100%; width:100%;" src="'.$row_result[2].'"/>';?>
             <div class="card-body">
               <h3 class="card-title"><?php echo $row_result[0];?></h3>
               <h4>$<?php echo $row_result[3];?></h4>

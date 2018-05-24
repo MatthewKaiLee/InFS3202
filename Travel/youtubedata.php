@@ -4,7 +4,7 @@ require_once('google-api-php-client-2.2.1/vendor/autoload.php');
 
 
 $client = new Google_Client();
-$client->setApplicationName("Youtube Data API v3 Test");
+$client->setApplicationName("Youtube Data API Search");
 $client->setDeveloperKey("AIzaSyA6erHM5H0jPocDaxk0z7tTc02IquDvA5c");
 
 //Read YouTube

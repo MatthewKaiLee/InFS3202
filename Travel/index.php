@@ -34,6 +34,9 @@
 						  });
 						});
 					  </script>
+
+<script src="js/googlep.js"></script>
+
 <!-- //FlexSlider -->
 <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,100,100italic,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
@@ -58,7 +61,7 @@
 								<h1>Welcome To Queensland Travel Agency !</h1>
 								<p>Queeensland Travel Agency is a company which provide luxury customize services for tourists. </p>
 								<div class=\"more\">
-									<a href=\"about.php\">Our Company</a>
+									<a href=\"#logo\">Explore now</a>
 								</div>
 							</div>
 						</li>
@@ -76,7 +79,7 @@
 	<!-- header -->
 	<div>
 		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-md-offset-4 col-lg-offset-4 col-sm-offset-4 col-xs-offset-4">
-			<a href="index.php" class="logo-image"><img class="logo-image-size" src="images/logo.jpg" alt="logo"></a>
+			<a href="index.php" class="logo-image"><img class="logo-image-size" src="images/logo.jpg" id="logo" alt="logo"></a>
 		</div>
 			<?php
 			if(isset($_SESSION["username"])) {
@@ -90,7 +93,7 @@
 	</div>
 		<div class="clearfix"> </div>
 
-	<div class="container-fluid header-navigation" style="margin-bottom: 10px;">
+	<div class="container-fluid header-navigation" id="navbar" style="margin-bottom: 10px;">
 		<div class="navigationbar navigationbar-default">
 			<div class="row navigation navigationbar-nav">
 				<div class="col-md-4 col-lg-2 col-xs-12 col-sm-4 top-nav"><a href="index.php">Home</a></div>
@@ -178,6 +181,18 @@
 			</div>
 			
 		</div>
+
+
+		<div class="container">
+
+			<div id="map" style="height: 400px; width: 100%;" class="col-md-12 mt-3 mb-4"></div>
+			<div class="col-md-8 col-md-offset-2 mb-3 mt-4 col-sm-8 col-sm-offset-2 ">
+			<div class="col-md-4 col-md-offset-2 ">Please choose your place:</div>
+			<input type="place" name="place" id="Googleplace">
+				<button class="" type="action" value="search" onclick="getSearchPlace()">Find</button>
+			</div>
+			
+		</div>
 		
 		<div class="container">
 	      <div class="row">
@@ -186,7 +201,7 @@
             <a href="destination.php?destination=Brisbane"><img class="card-img-top" src="images/brisbane.jpg" alt="Brisbane"></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="destination.php?destination=Brisbane">Brisbane</a>
+                <a href="destination.php?destination=Brisbane">Brisbane<div id="weather1"></div></a>
               </h4>
               <p class="card-text">Combine art and outdoor adventure in Brisbane, where creative spaces, music and hip new restaurants meet pretty riverside gardens and man-made beaches.</p>
             </div>
@@ -197,7 +212,7 @@
             <a href="destination.php?destination=Gold Coast"><img class="card-img-top" src="images/goldcoast.jpg" alt="Gold Coast"></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="destination.php?destination=Gold Coast">Gold Coast</a>
+                <a href="destination.php?destination=Gold Coast">Gold Coast<div id="weather2"></div></a>
               </h4>
               <p class="card-text">The Gold Coast's star attraction is its beaches, including the world-renowned stretch of sand at Surfers Paradise. Beyond the beaches, discover laid-back neighbourhoods, a booming culinary scene and the Gold Coast's famous theme parks.</p>
             </div>
@@ -208,7 +223,7 @@
             <a href="destination.php?destination=Sunshine Coast"><img class="card-img-top" src="images/sunshinecoast.jpg" alt="Sunshine Coast"></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="destination.php?destination=Sunshine Coast">Sunshine Coast</a>
+                <a href="destination.php?destination=Sunshine Coast">Sunshine Coast<div id="weather3"></div></a>
               </h4>
               <p class="card-text">Stretching from the coastal city of Caloundra, near , to the Great Sandy National Park in the north, the Sunshine Coast is home to pretty villages, renowned surf spots and spectacular rural hinterland.</p>
             </div>
@@ -219,7 +234,7 @@
             <a href="destination.php?destination=Cairns"><img class="card-img-top" src="images/cairns.jpg" alt="Cairns"></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="destination.php?destination=Cairns">Cairns</a>
+                <a href="destination.php?destination=Cairns">Cairns<div id="weather4"></div></a>
               </h4>
               <p class="card-text">Visit Cairns for the Great Barrier Reef and Wet Tropics World Heritage Rainforest, but don't miss the great things to do in and around town. You'll find brilliant cafés, bustling markets and plenty of beaches nearby. Relax by a resort pool or spend your days exploring this tropical oasis.</p>
             </div>
@@ -268,6 +283,43 @@
 <!--//footer-->	
 <!-- for bootstrap working -->
 		<script src="js/bootstrap.js"> </script>
+
+
+		<script>
+    
+
+    function makeRequest(city, selector) {
+  xhr = new XMLHttpRequest();
+
+  xhr.onload = function() {
+    var response = JSON.parse(this.responseText);
+    var city = response.city.name + ", " + response.city.country;
+    var weatherTitle = response.list[0].weather[0].main;
+    var temp = response.list[0].main.temp + "°";
+
+    var weatherContainer = document.querySelector(selector);
+    weatherContainer.innerHTML = weatherTitle + "   " + temp;
+    
+  };
+  xhr.open(
+    "GET",
+    "https://api.openweathermap.org/data/2.5/forecast?q="+city+"&APPID=9c39fa3ce9d953fdd507d7d9f77093ef&lang=zh_tw&units=metric",
+    true
+  );
+  xhr.send();
+}
+   var place = ["Brisbane,au", "Gold Coast,au", "Sunshine Coast,au", "Cairns,au"];
+   var selector = ["#weather1","#weather2","#weather3","#weather4"];
+for(var i = 0; i < 4; i++) {
+	makeRequest(place[i],selector[i]);
+}
+
+
+  </script>
+
+	<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwQeUa5F6g3oYRVZvOcx1PtmvKE0CAZ2o&callback=initMap">
+    </script>
 <!-- //for bootstrap working -->
 </body>
 </html>

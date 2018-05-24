@@ -35,7 +35,7 @@
               var text = document.createElement('text');
               text.textContent = address
               infowincontent.appendChild(text);
-              var icon = customLabel[type] || {};
+              var icon = customLabel[type] ||{};
               var marker = new google.maps.Marker({
                 map: map,
                 position: point,

@@ -176,8 +176,9 @@
 			<div class="services-overview">
 				<h3>Popular Packages</h3>
 
+
 				<?php 
-					$sql_query = "SELECT Name, ImageS FROM package";
+					$sql_query = "SELECT Name, ImageLocation FROM package";
 					$stmt_object = $db_link -> prepare($sql_query);
 					$stmt_object -> execute();
 					$result = $stmt_object -> get_result();
@@ -196,19 +197,19 @@
 						<div class=\"services-overview-grd\">";
 							echo '<a href="'; 
 							echo "package.php?package=".$row_result[0]; 
-							echo '"><img src="data:image/jpeg;base64,'.base64_encode( $row_result[1] ).'" style="height:100%; width:100%;" class="img-responsive"/></a>';
+							//echo '"><img src="data:image/jpeg;base64,'.base64_encode( $row_result[1] ).'" style="height:100%; width:100%;" class="img-responsive"/></a>';
+							echo '"><img src="'.$row_result[1].'" style="height:100%; width:100%;" class="img-responsive"/></a>';
 							echo "<div class=\"services-overview-gd\">
-								<h4 class=\"col-md-12\">".$row_result[0]."</h4>
-								<p>Neque porro quisquam est, qui dolorem ipsum quia dolor 
-									sit amet, consectetur, adipisci velit, sed quia non numquam 
-									eius modi tempora incidunt ut labore et dolore magnam aliquam 
-									quaerat voluptatem.</p>
+								<h6 class=\"col-md-12\">";
+							echo "<a href=\"package.php?package=".$row_result[0];
+								echo "\">".$row_result[0]."</a></h6>
+								<p></p>
 							</div>
 						</div>
 					</div>";
 							$item++;
 						}
-						echo "<div class=\"clearfix\"> </div></div>";
+						echo "</div><div class=\"clearfix\"> </div>";
 					}
 				?>
 			</div>

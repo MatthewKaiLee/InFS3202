@@ -3,7 +3,7 @@ session_start();
 require("connectDatabaseObject.php");
 if(isset($_GET["destination"]) && $_GET["destination"] != "") {
  $destination = $_GET["destination"];
- $sql_query = "SELECT Name, Description, Image, DestinationID FROM destination Where Name = ?";
+ $sql_query = "SELECT Name, Description, ImageLocation, DestinationID FROM destination Where Name = ?";
  $stmt_object = $db_link -> prepare($sql_query);
  $stmt_object -> bind_param("s", $destination);
  $stmt_object -> execute();
@@ -93,7 +93,9 @@ require("logout.php");
       <div class="row">
 
         <div class="col-md-12">
-          <?php echo '<img class="img-fluid" src="data:image/jpeg;base64,'.base64_encode( $row_result[2] ).'"/>';?>
+          <?php 
+            echo '<img class="img-fluid" src="'.$row_result[2].'"/>';
+          ?>
         </div>
 
         <div class="col-md-12">
@@ -109,7 +111,7 @@ require("logout.php");
 
       
         <?php 
-          $sql_query = "SELECT DestinationID, Name, ImageS FROM package Where DestinationID = \"".$row_result[3]."\"";
+          $sql_query = "SELECT DestinationID, Name, ImageLocation FROM package Where DestinationID = \"".$row_result[3]."\"";
           $result -> close();
           $stmt_object = $db_link -> prepare($sql_query);
           $stmt_object -> execute();
@@ -128,7 +130,8 @@ require("logout.php");
               $item++;
               echo '<div class="col-md-4 col-sm-12 mb-4">
           <a href="package.php?package='.$row_result[1].'">';
-          echo '<img class="img-fluid" src="data:image/jpeg;base64,'.base64_encode( $row_result[2] ).'"/>';
+          //echo '<img class="img-fluid" src="data:image/jpeg;base64,'.base64_encode( $row_result[2] ).'"/>';
+          echo '<img class="img-fluid" src="'.$row_result[2] .'"/>';
            echo ' </a>
            <a href="package.php?package='.$row_result[1].'"> <h5>'.$row_result[1].'</h5></a>
 

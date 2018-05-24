@@ -173,7 +173,7 @@
 							<div class="col-md-4" id="errpwmsg"></div>
 						</div>
 						<div class="col-md-12">
-							<h4 class="col-md-4">Check Password:</h4>
+							<h4 class="col-md-4">Confirm Password:</h4>
 							<input class="col-md-4" name="ckpassword" type="password" placeholder="Password">
 							<div class="col-md-4" id="errckpwmsg"></div>
 						</div>

@@ -2,42 +2,6 @@
 session_start();
 require("logout.php");
 require("connectDatabaseObject.php");
-/*require("simple_html_dom.php");
-$sql_query = "CREATE TABLE IF NOT EXISTS webscraping (
-    PersonID int,
-    LastName varchar(255),
-    FirstName varchar(255),
-    Address varchar(255),
-    City image
-);";
-$stmt_object = $db_link -> prepare($sql_query);
-$stmt_object -> execute();
-
-$html = file_get_html('https://www.ytravelblog.com/things-to-do-in-queensland/');
-foreach($html->find('article') as $key => $e) {
-	if($key == 0) {
-		$resulth3 = array();
-		$h3Array = $e->find('h3');
-		$imgArray = $e->find('img[class=size-full]');
-		foreach($h3Array as $num => $h3) {
-			if($num < count($imgArray)){
-				echo $h3."<br>";
-								//echo $imgArray[$num];
-				$resulth3 = $h3;
-			}
-
-		}
-		$pArray = $e->find('p');
-		$resultimg = array();
-		foreach($pArray as $p) {
-			foreach($p->find('img') as $i) {
-				$resultimg = $i;
-				echo $i;
-			}
-		}
-					}
-
-				}*/
 ?>
 
 <!DOCTYPE html>
@@ -132,63 +96,55 @@ foreach($html->find('article') as $key => $e) {
 				<li class="active">Photo Gallery</li>
 			</ol>
 			<h3>Photo Gallery</h3>
-			<?php
-			/*foreach($resulth3 as $num => $h3) {
-				echo $h3."<br>";
-			}
-			foreach($resultimg as $number => $img) {
-				echo $img;
-			}*/
-			?>
 			<div class="gallery-grids">
 				<div class="gallery-grid">
-					<a href="images/B01.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
+					<a href="images/B01.jpg" rel="Urban Brisbane Cultural Day Trip" class="b-link-stripe b-animate-go  thickbox">
 						<img src="images/B01.jpg" alt=" " class="img-responsive" />
 					</a>
-					<a href="images/B02.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
+					<a href="images/B02.jpg" rel="Moreton Island and Dolphin Viewing Day Trip" class="b-link-stripe b-animate-go  thickbox">
 						<img src="images/B02.jpg" alt=" " class="img-responsive" />
 					</a>
-					<a href="images/B03.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
+					<a href="images/B03.jpg" rel="North Stradbroke Island Short Term Package" class="b-link-stripe b-animate-go  thickbox">
 						<img src="images/B03.jpg" alt=" " class="img-responsive" />
 					</a>
 				</div>
 				<div class="gallery-grid">
-					<a href="images/G01.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
+					<a href="images/G01.jpg" rel="Gold Coast Beginner Day Trip" class="b-link-stripe b-animate-go  thickbox">
 						<img src="images/G01.jpg" alt=" " class="img-responsive" />
 					</a>
-					<a href="images/G02.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
+					<a href="images/G02.jpg" rel="Surfer Paradise Adventure Short Term Package" class="b-link-stripe b-animate-go  thickbox">
 						<img src="images/G02.jpg" alt=" " class="img-responsive" />
 					</a>
-					<a href="images/G03.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
+					<a href="images/G03.jpg" rel="Lamington National Park Day Trip" class="b-link-stripe b-animate-go  thickbox">
 						<img src="images/G03.jpg" alt=" " class="img-responsive" />
 					</a>
 
 				</div>
 				<div class="gallery-grid">
-					<a href="images/S01.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
+					<a href="images/S01.jpg" rel="Noosa Wonderful Experience Trip" class="b-link-stripe b-animate-go  thickbox">
 						<img src="images/S01.jpg" alt=" " class="img-responsive" />
 					</a>
-					<a href="images/S02.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
+					<a href="images/S02.jpg" rel="Fraser Island Short Term Package" class="b-link-stripe b-animate-go  thickbox">
 						<img src="images/S02.jpg" alt=" " class="img-responsive" />
 					</a>
-					<a href="images/G03.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
+					<a href="images/G03.jpg" rel="Sunshine Coast Beach Trip" class="b-link-stripe b-animate-go  thickbox">
 						<img src="images/S03.jpg" alt=" " class="img-responsive" />
 					</a>
 
 				</div>
 				<div class="gallery-grid">
-					<a href="images/C01.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
+					<a href="images/C01.jpg" rel="Great Barrier Reef Relax Trip" class="b-link-stripe b-animate-go  thickbox">
 						<img src="images/C01.jpg" alt=" " class="img-responsive" />
 					</a>
 				</div>
 				<div class="gallery-grid">
-					<a href="images/C02.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
+					<a href="images/C02.jpg" rel="Daintree Rainforest Origin Trip" class="b-link-stripe b-animate-go  thickbox">
 						<img src="images/C02.jpg" alt=" " class="img-responsive" />
 					</a>
 				</div>
 				<div class="gallery-grid">
 
-					<a href="images/CO3.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
+					<a href="images/CO3.jpg" rel="Great Barrier Reef Open Water Wonderful Package" class="b-link-stripe b-animate-go  thickbox">
 						<img src="images/CO3.jpg" alt=" " class="img-responsive" />
 					</a>
 				</div>

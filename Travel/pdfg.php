@@ -3,7 +3,7 @@
 require('connectDatabaseObject.php');
   
   if(isset($_GET["package"]) && $_GET["package"] != "") {
-    $sql_query = "SELECT `package`.`Name`, `package`.`Description`, `package`.`ImageS`, Price, Stock FROM package Where `package`.`Name` = ?";
+    $sql_query = "SELECT `package`.`Name`, `package`.`Description`, `package`.`ImageLocation`, Price, Stock FROM package Where `package`.`Name` = ?";
     $stmt_object = $db_link -> prepare($sql_query);
     $stmt_object -> bind_param("s", $_GET["package"]);
     $stmt_object -> execute();
@@ -67,7 +67,8 @@ $pdf->Write(0, $row_result[0], '', 0, 'C', 1, 0, false, false, 0);
 
 $img = $row_result[2];
 $pdf->SetFont('helvetica', '', 12);
-$img = '<img class="card-img-top img-fluid" style="height:350px; width:700px;" src="data:image/jpeg;base64,'.base64_encode( $row_result[2] ).'"/>';
+//$img = '<img class="card-img-top img-fluid" style="height:350px; width:700px;" src="data:image/jpeg;base64,'.base64_encode( $row_result[2] ).'"/>';
+$img = '<img class="card-img-top img-fluid" style="height:350px; width:700px;" src="'.$row_result[2].'"/>';
 $pdf->writeHTML($img, true, 0, true, true);
 $text = '<p>Description: '.$row_result[1].'</p>';
 
