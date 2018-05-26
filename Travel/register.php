@@ -3,7 +3,9 @@
 	session_start();
 	if(isset($_POST["action"]) && $_POST["action"] == "register") {
 		require("connectDatabaseObject.php");
-		$username = $_POST["username"];
+		
+    if($_REQUEST['captcha'] == $_SESSION['digit']) {
+    	$username = $_POST["username"];
 		$query_ExistUser = "SELECT Username FROM customer WHERE Username = '".$username."'";
 		$result_ExistUser = $db_link -> query($query_ExistUser);
 		if ($result_ExistUser -> num_rows <= 0) {
@@ -13,12 +15,17 @@
 			$stmt_Object -> execute();
 			$stmt_Object -> close();
 			$db_link -> close();
+			session_destroy();
+			session_start();
 			$_SESSION["username"] = $_POST["username"];
 			header("Location: index.php");
 		} else {
+			session_destroy();
 			header("Location: register.php?error=true&username='".$username."'");
 		}
-	}
+    } die("Sorry, the CAPTCHA code entered was incorrect!");
+    session_destroy();
+  }
 ?>
 
 
@@ -46,6 +53,17 @@
 
 <script src="js/register.js" type="text/javascript"></script>
 
+
+    <!--Calendar-->
+<link rel="stylesheet" href="https://www.jqwidgets.com/public/jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="https://www.jqwidgets.com/public/jqwidgets/styles/jqx.energyblue.css" type="text/css" />
+    <script type="text/javascript" src="https://www.jqwidgets.com/public/jqwidgets/jqx-all.js"></script>
+    <script type="text/javascript" src="https://www.jqwidgets.com/public/jqwidgets/globalization/globalize.js"></script>
+    <link rel="stylesheet" href="https://www.jqwidgets.com/public/jqwidgets/styles/jqx.arctic.css" type="text/css" />
+    <script type="text/javascript" src="./js/app.js"></script>
+    <link rel="stylesheet" href="./css/app.css" type="text/css" />
+
+<!--Calendar-->
 
 </head>
 	
@@ -111,29 +129,42 @@
                     	<input type="password" name="password" placeholder="Password" /><div class="errMsg" id="errpassword"></div>
                     	<input type="password" name="confirmpassword" placeholder="ConfirmPassword" /><div class="errMsg" id="errconfirmpassword"></div>
                     	<input type="email" name="email" placeholder="Email" /><div class="errMsg" id="erremail"></div>
+
+
+<p><img src="captcha.php" width="120" height="30" border="1" alt="CAPTCHA"></p>
+<input type="text" size="6" maxlength="5" name="captcha" value="" placeholder="type the text from image please"><br>
+
+
                     	<input type="submit" name="action" value="register" class="btn btn-success btn-sm" />
+
                     </form>
             </div>
         </div>
     </div>
 </div>
 
+
 <!--footer-->
-	<div class="footer">
-		<div class="container">
-			<div class="footer-row">
-				<div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
-					<h3>Queensland Travel Agency</h3>
-					<h4>mail@qta.com.au</h4>>
-					<h4>(07) 3456 7890</h4>
-				</div>
-				<div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
-					<h3>Find out more</h3>					
-					<ul>
-						<li><a href="contact.php">Contact</a></li>
-						<li><a href="https://blog.queensland.com/">Blog</a></li>
-					</ul>
-				</div>
+  <div class="footer">
+    <div class="container">
+      <div class="footer-row">
+        <div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
+          <h3>Queensland Travel Agency</h3>
+          <ul style="color: #868686;font-size:14px;text-decoration: none;font-family: 'Open Sans', sans-serif;list-style-type:none;">
+                  <li>mail@qta.com.au</li>
+                  <li>(07) 3456 7890</li>
+                </ul>
+          <h3>Find out more</h3>          
+          <ul>
+            <li><a href="contact.php">Contact</a></li>
+            <li><a href="https://blog.queensland.com/">Blog</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
+          <div id="calendar">
+         
+        </div>
+        </div>
         <div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
           <h3>Destination</h3>
           <ul>
@@ -143,16 +174,16 @@
             <li><a href="destination.php?destination=Cairns">Cairns<a/></li>
           </ul>
         </div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div>
-	<div class="footer-bottom">
-		<div class="container">		
-			<p>Queensland Travel Agency &copy; QTA 2018. All rights reserved.</p>					
-		</div>
-	</div>
-<!--//footer-->	
+        <div class="clearfix"> </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">   
+      <p>Queensland Travel Agency &copy; QTA 2018. All rights reserved.</p>         
+    </div>
+  </div>
+<!--//footer--> 
 <!-- for bootstrap working -->
 		<script src="js/bootstrap.js"> </script>
 <!-- //for bootstrap working -->

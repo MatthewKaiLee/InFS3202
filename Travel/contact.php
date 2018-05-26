@@ -5,11 +5,6 @@
 	require("logout.php");
 
 	if(isset($_POST["action"]) && $_POST["action"] == "Send" && isset($_POST["name"]) && $_POST["name"] != "" && isset($_POST["email"]) && $_POST["email"] != "" && isset($_POST["message"]) && $_POST["message"] != "") {
-		/*$mailto = $_POST["email"];
-		$mailSubject = "QTA MAIL";
-		$mailHeader = "From: QTA\r\n";
-		$mailContent = "Thank you your mail!";
-		mail($mailto, $mailSubject, $mailContent, $mailHeader);*/
 		sendMail($_POST["email"], $_POST["name"]);
 		header("Location: contact.php");
 	}
@@ -34,6 +29,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //js -->
 <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,100,100italic,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+
+<!--Calendar-->
+<link rel="stylesheet" href="https://www.jqwidgets.com/public/jqwidgets/styles/jqx.base.css" type="text/css" />
+		<link rel="stylesheet" href="https://www.jqwidgets.com/public/jqwidgets/styles/jqx.energyblue.css" type="text/css" />
+		<script type="text/javascript" src="https://www.jqwidgets.com/public/jqwidgets/jqx-all.js"></script>
+		<script type="text/javascript" src="https://www.jqwidgets.com/public/jqwidgets/globalization/globalize.js"></script>
+		<link rel="stylesheet" href="https://www.jqwidgets.com/public/jqwidgets/styles/jqx.arctic.css" type="text/css" />
+		<script type="text/javascript" src="./js/app.js"></script>
+		<link rel="stylesheet" href="./css/app.css" type="text/css" />
+
+<!--Calendar-->
 </head>
 	
 <body>
@@ -151,15 +157,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="footer-row">
 				<div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
 					<h3>Queensland Travel Agency</h3>
-					<h4>mail@qta.com.au</h4>>
-					<h4>(07) 3456 7890</h4>
-				</div>
-				<div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
+					<ul style="color: #868686;font-size:14px;text-decoration: none;font-family: 'Open Sans', sans-serif;list-style-type:none;">
+            			<li>mail@qta.com.au</li>
+            			<li>(07) 3456 7890</li>
+          			</ul>
 					<h3>Find out more</h3>					
 					<ul>
 						<li><a href="contact.php">Contact</a></li>
 						<li><a href="https://blog.queensland.com/">Blog</a></li>
 					</ul>
+				</div>
+				<div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
+					<div id="calendar">
+         
+        </div>
 				</div>
         <div class="col-md-4 col-sm-12 col-xs-12 footer-grids">
           <h3>Destination</h3>
